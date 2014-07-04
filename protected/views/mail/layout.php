@@ -1,0 +1,1 @@
+<?php echo $this->renderInternal(Yii::getPathOfAlias(Yii::app()->mail->viewPath.'.'.$view).'.php',$data)?>

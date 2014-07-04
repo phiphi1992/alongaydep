@@ -1,0 +1,3 @@
+html, body, * {font-family: arial,sans-serif;}
+.form-horizontal .control-label span.required{color:red}
+.form-horizontal .controls .errorMessage{color:#bd362f}
