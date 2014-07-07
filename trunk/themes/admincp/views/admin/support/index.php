@@ -16,7 +16,7 @@
 	<div class="page-content">
 		<div class="page-header position-relative">
 			<h1>
-				<?php echo translate('Dánh sách thành viên');?>
+				<?php echo translate('Dánh sách hổ trợ');?>
 			</h1>
 		</div><!--/.page-header-->
 		<div class="row-fluid">
@@ -57,30 +57,6 @@
 							'filter'=>false,
 							'type'=>'raw',
 							'value'=>'$data->position',
-						),
-						'yahoo'=>array(
-							'name'=>'yahoo',
-							'filter'=>false,
-							'type'=>'raw',
-							'value'=>'$data->yahoo',
-						),
-						'skype'=>array(
-							'name'=>'skype',
-							'filter'=>false,
-							'type'=>'raw',
-							'value'=>'$data->skype',
-						),
-						'phone'=>array(
-							'name'=>'phone',
-							'filter'=>false,
-							'type'=>'raw',
-							'value'=>'$data->phone',
-						),
-						'created'=>array(
-							 'name'=>'created',
-							 'filter'=>false,
-							'type'=>'raw',
-							'value'=>'date(Yii::app()->params["date"],$data->created)',
 						),
 						array(
 							'header' => '<input type="button" name="deleteAll" class="deleteAll btn btn-mini btn-danger icon-trash bigger-120" value="Xóa" />',

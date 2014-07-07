@@ -9,14 +9,14 @@
 					<i class="icon-angle-right arrow-icon"></i>
 				</span>
 			</li>
-			<li class="active"><?php echo translate('Thư Góp Ý');?></li>
+			<li class="active"><?php echo translate('Thư liên hệ');?></li>
 		</ul>
 	</div>
 
 	<div class="page-content">
 		<div class="page-header position-relative">
 			<h1>
-				<?php echo translate('Thư Góp Ý');?>
+				<?php echo translate('Thư liên hệ');?>
 			</h1>
 		</div><!--/.page-header-->
 		<div class="row-fluid">

@@ -9,7 +9,14 @@
 					<i class="icon-angle-right arrow-icon"></i>
 				</span>
 			</li>
-			<li class="active"><?php echo translate('Thêm danh mục');?></li>
+			<?php $id = (isset($_GET['id']) && !empty($_GET['id'])) ? $_GET['id'] : 1;  ?>
+			<li class="active"><?php 
+				if($id == 1) echo "Sản phẩm điện hoa";
+				else{
+					if($id == 2) echo "Sản phẩm thiết bị an ninh";
+					else	echo "Sản phẩm du lịch";
+				}
+			?></li>
 		</ul>
 	</div>
 

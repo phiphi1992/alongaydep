@@ -70,6 +70,7 @@ class Product extends CActiveRecord
 			'updated' => 'Ngày cập nhập',
 			'product_category_id' => 'Danh mục sản phẩm',
 			'price' => 'Giá',
+			'type' => 'type',
 		);
 	}
 
@@ -85,7 +86,7 @@ class Product extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($id = null)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -103,6 +104,7 @@ class Product extends CActiveRecord
 		//$criteria->compare('price',$this->price);
 		$criteria->with = array('productCategory');
 		$criteria->together = true;
+		$criteria->addCondition("t.type=".$id);
 		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

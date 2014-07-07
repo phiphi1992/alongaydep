@@ -32,6 +32,22 @@
 					
 					
 					<div class="control-group">
+						<div class="controls">
+							<img style="max-width: 500px; max-height:200px;" src="<?php 
+								if(!empty($model)) echo getImageFullSize($model->image);
+							?>"/>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<?php echo $form->labelEx($model,'image',array('class'=>'control-label')); ?>
+						<div class="controls">
+							<?php echo $form->fileField($model,'image',array('id'=>'id-input-file-1', 'class'=>'span12')); ?>
+							<?php echo $form->error($model,'image'); ?>
+						</div>
+					</div>
+					
+					<div class="control-group">
 						<?php echo $form->labelEx($model,'name',array('class'=>'control-label')); ?>
 						<div class="controls">
 							<?php echo $form->textField($model,'name',array('placeholder'=>'Tên khách sạn', 'class'=>'span12')); ?>
@@ -91,24 +107,7 @@
 							<?php echo $form->textField($model,'phone',array('placeholder'=>'Điện thoại', 'class'=>'span12')); ?>
 							<?php echo $form->error($model,'phone'); ?>
 						</div>
-					</div>
-					
-					<div class="control-group">
-						<div class="controls">
-							<img style="max-width: 500px; max-height:200px;" src="<?php 
-								if(!empty($model)) echo getImageFullSize($model->image);
-							?>"/>
-						</div>
-					</div>
-					
-					<div class="control-group">
-						<?php echo $form->labelEx($model,'image',array('class'=>'control-label')); ?>
-						<div class="controls">
-							<?php echo $form->fileField($model,'image',array('id'=>'id-input-file-1', 'class'=>'span12')); ?>
-							<?php echo $form->error($model,'image'); ?>
-						</div>
-					</div>
-				
+					</div>			
 
 					<div class="form-actions">
 						<button id="submitForm" class="btn btn-primary" type="submit">

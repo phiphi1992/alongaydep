@@ -41,6 +41,13 @@
 									'header'=>'STT',
 									'value'=>'$this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize + ($row+1)',
 								),
+								'image'=>array(
+									'name' => 'image',
+									'type'=>'raw',
+									'filter'=>false,
+									'value'=>'CHtml::image(getImage($data->image,"80", "60" ))',
+									'htmlOptions'=> array("class"=>"image"),
+								),
 								'name',								
 								'description' => array(
 									'name'=>'description',
@@ -49,13 +56,7 @@
 									'value'=>'word_limiter($data->description, 20)',
 
 								),
-								'image'=>array(
-									'name' => 'image',
-									'type'=>'raw',
-									'filter'=>false,
-									'value'=>'CHtml::image(getImage($data->image,"80", "60" ))',
-									'htmlOptions'=> array("class"=>"image"),
-								),
+								
 								'created'=>array(
 									'name'=>'created',
 									'type'=>'raw',

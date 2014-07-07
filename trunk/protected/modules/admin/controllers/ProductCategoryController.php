@@ -26,7 +26,7 @@ class ProductCategoryController extends Controller
 			'model'=>$model,
 		));
 	}
-	public function actionCreate()
+	public function actionCreate($id = null)
 	{
 		$model = new ProductCategory;
 		
@@ -35,10 +35,12 @@ class ProductCategoryController extends Controller
 			$model->attributes=$_POST['ProductCategory'];
 			$model->created = time();
 			$model->alias = alias($_POST['ProductCategory']['name']);
+			$model->type = $id;
+			
 			if($model->save())
 			{
 				Yii::app()->user->setFlash('success', translate('Thêm thành công.'));
-				$this->redirect(PIUrl::createUrl('/admin/productCategory/index'));
+				$this->redirect(PIUrl::createUrl('/admin/productCategory/index', array('id'=>$id)));
 			}
 		}
 		
@@ -53,12 +55,13 @@ class ProductCategoryController extends Controller
 		{
 			
 			$model->attributes=$_POST['ProductCategory'];
-			$model->created = time();
+			$model->updated = time();
+			$model->type = $id;
 			
 			if($model->save())
 			{
 				Yii::app()->user->setFlash('success', translate('Cập nhập thành công.'));
-				$this->redirect(PIUrl::createUrl('/admin/productCategory/index'));
+				$this->redirect(PIUrl::createUrl('/admin/productCategory/index',  array('id'=>$id)));
 			}
 		}
 		
