@@ -71,7 +71,6 @@ class CategoriesNewsController extends Controller
 		}
 		
 		$arrCate = CategoriesNews:: model()->getDataCategories();
-		
 		$this->render('update', array('model'=>$model, 'arrCate' => $arrCate));
 	}
 	
