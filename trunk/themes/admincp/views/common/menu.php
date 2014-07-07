@@ -221,6 +221,30 @@
 			<span class="menu-text"> Thư liên hệ </span>
 		</a>
 	</li>
+	
+	<li <?php if((curCA('controller') == 'provinces' ||  curCA('controller') == 'wards'))  echo 'class="active"'?>>
+		<a href="#" class="dropdown-toggle">
+			<i class="icon-text-width"></i>
+			<span class="menu-text">Quản lý dữ liệu </span>
+			<b class="arrow icon-angle-down"></b>
+		</a>
+		
+		<ul class="submenu">
+			<li>
+				<a href="<?php echo PIUrl::createUrl('/admin/provinces/');?>" class="dropdown-toggle">
+					<i class="icon-double-angle-right"></i>
+					DS Tỉnh/Thành phố
+				</a>
+			</li>
+			<li>
+				<a href="<?php echo PIUrl::createUrl('/admin/wards/');?>" class="dropdown-toggle">
+					<i class="icon-double-angle-right"></i>
+					DS Quận/Huyện
+				</a>
+			</li>
+		</ul>
+	</li>
+	
 </ul><!--/.nav-list-->
 	<div class="sidebar-collapse" id="sidebar-collapse">
 		<i class="icon-double-angle-left"></i>

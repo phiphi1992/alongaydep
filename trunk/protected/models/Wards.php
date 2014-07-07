@@ -29,7 +29,7 @@ class Wards extends PIActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('province_id, published, ordering', 'numerical', 'integerOnly'=>true),
+			//array('province_id, published, ordering', 'numerical', 'integerOnly'=>true),
 			array('title, code', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -45,6 +45,7 @@ class Wards extends PIActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'ward' => array(self::BELONGS_TO, 'Provinces', 'province_id'),
 		);
 	}
 
@@ -55,8 +56,8 @@ class Wards extends PIActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
-			'province_id' => 'Province',
+			'title' => 'Quận/Huyện',
+			'province_id' => 'Tỉnh/Thành phố',
 			'code' => 'Code',
 			'published' => 'Published',
 			'ordering' => 'Ordering',
@@ -82,12 +83,14 @@ class Wards extends PIActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('title',$this->title,true);
+		$criteria->compare('t.title',$this->title,true);
 		$criteria->compare('province_id',$this->province_id);
-		$criteria->compare('code',$this->code,true);
-		$criteria->compare('published',$this->published);
-		$criteria->compare('ordering',$this->ordering);
-
+		//$criteria->compare('code',$this->code,true);
+		//$criteria->compare('published',$this->published);
+		//$criteria->compare('ordering',$this->ordering);
+		$criteria->with = array('ward');
+		$criteria->together = true;
+		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
