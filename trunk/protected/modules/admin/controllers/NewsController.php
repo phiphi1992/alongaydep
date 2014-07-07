@@ -21,7 +21,6 @@ class NewsController extends Controller
 		
 		if(isset($_GET['News']))
 		{	$model->attributes=$_GET['News'];
-			$model->sub_category_id =  $_GET['News']['sub_category_id'];
 		}
 		
 		$this->render('index',array(
@@ -55,7 +54,6 @@ class NewsController extends Controller
 				$model->image = $image_old;
 			}
 			$model->category_news_id = $_POST['News']['category_news_id'];
-			$model->sub_category_id =  $_POST['sub_category'];
 			$model->created = time();
 			$model->alias = alias($_POST['News']['name']);
 			
@@ -76,9 +74,9 @@ class NewsController extends Controller
 	
 	public function actionGetCate($id = null){
 		$criteria = new CDBCriteria();
-		$criteria->addCondition('category_new_id = '.$id);
+		$criteria->addCondition('parent_id = '.$id);
 		$criteria->select = 'id, name';
-		$arr_cate = SubCategoryNews::model()->findAll($criteria);
+		$arr_cate = CategoriesNews::model()->findAll($criteria);
 		$arrData = array();
 		foreach($arr_cate as $cate){
 			$arrData[] = array('id'=>$cate->id, 'name'=>$cate->name);
@@ -113,7 +111,6 @@ class NewsController extends Controller
 			}
 			
 			$model->category_news_id = $_POST['News']['category_news_id'];
-			$model->sub_category_id =  $_POST['sub_category'];
 			$model->created = time();
 			$model->alias = alias($_POST['News']['name']);
 			

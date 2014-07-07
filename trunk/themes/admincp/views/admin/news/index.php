@@ -45,14 +45,8 @@
 								'categories.name' => array(
 									'name' => 'category_news_id',
 									'type' => 'raw',
-									'value' => 'isset($data->categories->name) ? $data->categories->name :  ""',
+									'value' => 'CategoriesNews::model()->linkCategory1($data->category_news_id)',
 									'filter' => CHtml::dropDownList('News[category_news_id]', ' ', CategoriesNews::model()->getDataCategories1()),
-								),
-								'sub_category.name' => array(
-									'name' => 'sub_category_id',
-									'type' => 'raw',
-									'value' => 'isset($data->sub_category->name) ? $data->sub_category->name :  ""',
-									'filter' => CHtml::dropDownList('News[sub_category_id]', ' ', SubCategoryNews::model()->getDataCategories1()),
 								),
 								'image'=>array(
 									'name' => 'image',

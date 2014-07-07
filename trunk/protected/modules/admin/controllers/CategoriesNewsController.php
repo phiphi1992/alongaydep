@@ -46,7 +46,7 @@ class CategoriesNewsController extends Controller
 			}
 		}
 		
-		$arrCate = CategoriesNews:: model()->getDataCategories();
+		$arrCate = CategoriesNews:: model()->getDataCategories1();
 		
 		$this->render('create', array('model'=>$model, 'arrCate' => $arrCate));
 	}
@@ -70,7 +70,7 @@ class CategoriesNewsController extends Controller
 			}
 		}
 		
-		$arrCate = CategoriesNews:: model()->getDataCategories();
+		$arrCate = CategoriesNews:: model()->getDataCategories1();
 		$this->render('update', array('model'=>$model, 'arrCate' => $arrCate));
 	}
 	
@@ -100,14 +100,10 @@ class CategoriesNewsController extends Controller
 		if(!empty($model)){
 		
 			// delete sub category
-			$criteria = new CDBCriteria();
-			$criteria->addCondition("category_new_id = {$id}");
-			$criteria->select = "id";
-			$arrSubCateID = SubCategoryNews::model()->findALl($criteria);
-			foreach($arrSubCateID as $cate){
-				$modelCate = SubCategoryNews::model()->find($cate->id);
-				$modelCate->delete();
-			}
+			$criteria = new CDBCriteria;
+			$criteria->addCondition("parent_id = ".$id);
+			$cate = new CategoriesNews();
+			$cate->deleteAll($criteria);
 		
 			// delete news
 			$criteria = new CDBCriteria();
@@ -138,17 +134,13 @@ class CategoriesNewsController extends Controller
 		for($i=0; $i<count($arrIdNew); $i++){
 			
 			// Delete all news of category new
-			$model = $this->loadModel($arrIdNew[$i]);
+			$model = CategoriesNews::model()->findByPk($arrIdNew[$i]);
 			if(!empty($model)){
 				// delete sub category
-				$criteria = new CDBCriteria();
-				$criteria->addCondition("category_new_id = {$arrIdNew[$i]}");
-				$criteria->select = "id";
-				$arrSubCateID = SubCategoryNews::model()->findALl($criteria);
-				foreach($arrSubCateID as $cate){
-					$modelCate = SubCategoryNews::model()->find($cate->id);
-					$modelCate->delete();
-				}
+				$criteria = new CDBCriteria;
+				$criteria->addCondition("parent_id = ".$arrIdNew[$i]);	
+				$cate = new CategoriesNews();
+				$cate->deleteAll($criteria);
 			
 				// delete news
 				$criteria = new CDBCriteria();
@@ -163,10 +155,10 @@ class CategoriesNewsController extends Controller
 					$this->unlink($path, $name);
 					$modelNew->delete();
 				}
+				$model->delete();
 			}
 			
 			// Delete category new
-			$model->delete();
 			
 		}
 		if(!isset($_GET['ajax']))

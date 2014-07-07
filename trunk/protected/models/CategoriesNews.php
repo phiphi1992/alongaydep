@@ -108,21 +108,31 @@ class CategoriesNews extends PIActiveRecord
 		$data_Categories = array();
 		$data_Categories[] = '-- Chọn danh mục tin tức --';
 		foreach($arr as $v){
-			if($v->parent_id == 0)
-				$data_Categories[$v->id] = $v->name;
+			if($v->parent_id == 0){
+				$criteria = new CDbCriteria;
+				$criteria->addCondition("parent_id = ".$v->id);
+				$category = CategoriesNews::model()->find($criteria);
+				if(!empty($category))	$category = " >> ".$category->name;
+				else	$category = '';
+				$link = $v->name.$category;
+				$data_Categories[$v->id] = $link;
+			}
+				
 		}
 		return $data_Categories;
 	}
 	
 	public function getDataCategories1()
 	{
-		$dataProvider=new CActiveDataProvider('CategoriesNews', array('criteria'=>array('select'=>'id, name')));
+		$dataProvider=new CActiveDataProvider('CategoriesNews', array('criteria'=>array('select'=>'id, name, parent_id')));
 		$arr = $dataProvider->getData();
 		$data_Categories = array();
 		$data_Categories[""] = '-- Chọn danh mục tin tức --';
-		//$data_Categories[""] = '-- Hiển thị tất cả --';
+		
 		foreach($arr as $v){
-			$data_Categories[$v->id] = $v->name;
+			if($v->parent_id == 0){
+				$data_Categories[$v->id] = $v->name;
+			}
 		}
 		return $data_Categories;
 	}
@@ -135,5 +145,16 @@ class CategoriesNews extends PIActiveRecord
 			$link = $category->name." >> ".$subCate;
 		}else	$link = $cate->name;
 		return $link;
+	}
+	
+	public function linkCategory1($id){
+		$cate = CategoriesNews::model()->findByPK($id);
+		$criteria = new CDbCriteria;
+		$criteria->addCondition("parent_id = ".$cate->id);
+		$category = CategoriesNews::model()->find($criteria);
+		if(!empty($category))	$category = " >> ".$category->name;
+		else	$category = '';
+		$link = $cate->name.$category;
+		return $link;	
 	}
 }
