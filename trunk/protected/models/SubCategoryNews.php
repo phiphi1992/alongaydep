@@ -115,7 +115,6 @@ class SubCategoryNews extends CActiveRecord
 		$data_Categories = array();
 		$data_Categories[] = '-- Chọn danh mục tin tức --';
 		foreach($arr as $v){
-			if($v->id != 1)
 				$data_Categories[$v->id] = $v->name;
 		}
 		return $data_Categories;
@@ -126,10 +125,9 @@ class SubCategoryNews extends CActiveRecord
 		$dataProvider=new CActiveDataProvider('SubCategoryNews', array('criteria'=>array('select'=>'id, name')));
 		$arr = $dataProvider->getData();
 		$data_Categories = array();
-		$data_Categories[] = '-- Chọn danh mục tin tức --';
-		$data_Categories[""] = '-- Hiển thị tất cả --';
+		$data_Categories[""] = '-- Chọn danh mục tin tức --';
+		//$data_Categories[""] = '-- Hiển thị tất cả --';
 		foreach($arr as $v){
-			if($v->id != 1)
 			$data_Categories[$v->id] = $v->name;
 		}
 		return $data_Categories;

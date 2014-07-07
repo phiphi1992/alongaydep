@@ -12,6 +12,7 @@
  * @property string $content
  * @property string $image
  * @property integer $created
+ * @property integer $sub_category_id
  */
 class News extends PIActiveRecord
 {
@@ -94,11 +95,11 @@ class News extends PIActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('t.name',$this->name,true);
-		$criteria->compare('alias',$this->alias,true);
+		//$criteria->compare('alias',$this->alias,true);
 		$criteria->compare('category_news_id',$this->category_news_id);
 		$criteria->compare('sub_category_id',$this->sub_category_id);
 		//$criteria->compare('description',$this->description,true);
-		$criteria->compare('content',$this->content,true);
+		//$criteria->compare('content',$this->content,true);
 		//$criteria->compare('image',$this->image,true);
 		//$criteria->compare('created',$this->created);
 		$criteria->with = array('categories', 'sub_category');

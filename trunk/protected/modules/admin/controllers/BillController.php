@@ -16,6 +16,7 @@ class BillController extends Controller
 	
 	public function actionIndex()
 	{
+		
 		$model = new Bill('search');
 		$model->unsetAttributes();  // clear any default values
 		

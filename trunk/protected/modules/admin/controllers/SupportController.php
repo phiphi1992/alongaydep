@@ -20,8 +20,10 @@ class SupportController extends Controller
 		
 		$model->unsetAttributes();  // clear any default values
 		
-		if(isset($_GET['Support']))
+		if(isset($_GET['Support'])){
 			$model->attributes=$_GET['Support'];
+			$model->group_support_id = $_GET['Support']['group_support_id'];
+		}
 		
 		$this->render('index',array(
 			'model'=>$model,

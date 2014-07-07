@@ -61,6 +61,14 @@
 							<?php echo $form->error($model,'month'); ?>
 						</div>
 					</div>
+					
+					<div class="control-group">
+						<?php echo $form->labelEx($model,'year',array('class'=>'control-label')); ?>
+						<div class="controls">
+							<?php echo $form->textField($model,'year',array('placeholder'=>'Số lượt truy cập trong năm','class'=>'span12')); ?>
+							<?php echo $form->error($model,'year'); ?>
+						</div>
+					</div>
 
 					<div class="form-actions">
 						<button id="submitForm" class="btn btn-primary" type="submit">

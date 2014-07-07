@@ -113,8 +113,7 @@ class GroupSupport extends CActiveRecord
 		$dataProvider=new CActiveDataProvider('GroupSupport', array('criteria'=>array('select'=>'id, name')));
 		$arr = $dataProvider->getData();
 		$data_Categories = array();
-		//$data_Categories[] = '-- Chọn danh mục tin tức --';
-		$data_Categories[""] = '-- Hiển thị tất cả --';
+		$data_Categories[""] = '-- Chọn nhóm hổ trợ --';
 		foreach($arr as $v){
 			$data_Categories[$v->id] = $v->name;
 		}

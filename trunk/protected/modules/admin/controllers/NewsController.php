@@ -20,8 +20,10 @@ class NewsController extends Controller
 		$model->unsetAttributes();  // clear any default values
 		
 		if(isset($_GET['News']))
-			$model->attributes=$_GET['News'];
-
+		{	$model->attributes=$_GET['News'];
+			$model->sub_category_id =  $_GET['News']['sub_category_id'];
+		}
+		
 		$this->render('index',array(
 			'model'=>$model,
 		));

@@ -22,6 +22,7 @@ class CounterController extends Controller
 			$model = new Counter;
 		if(!empty($_POST['Counter'])){
 			$model->attributes = $_POST['Counter'];
+			$model->year = $_POST['Counter']['year'];
 			if($model->save()){
 				Yii::app()->user->setFlash('success', translate('Cập nhật thành công.'));
 				$this->redirect(PIUrl::createUrl('/admin/counter'));
