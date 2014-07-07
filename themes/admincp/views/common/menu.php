@@ -82,13 +82,7 @@
 			<li>
 				<a href="<?php echo PIUrl::createUrl('/admin/categoriesNews/');?>" class="dropdown-toggle">
 					<i class="icon-double-angle-right"></i>
-					Danh mục
-				</a>
-			</li>
-			<li>
-				<a href="<?php echo PIUrl::createUrl('/admin/subCategoryNews/');?>" class="dropdown-toggle">
-					<i class="icon-double-angle-right"></i>
-					Danh mục con
+					Danh mục tin tức
 				</a>
 			</li>
 			<li>

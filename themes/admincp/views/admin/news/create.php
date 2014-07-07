@@ -38,14 +38,6 @@
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label">Danh mục con</label>
-						<div class="controls">
-							<select name="sub_category" class="span12 cate_sub">
-								<option value="0">-- Chọn danh mục tin tức -- </option>
-							</select>
-						</div>
-					</div>
-					<div class="control-group">
 						<?php echo $form->labelEx($model,'name',array('class'=>'control-label')); ?>
 						<div class="controls">
 							<?php echo $form->textField($model,'name',array('placeholder'=>'Tên tin tức', 'class'=>'span12')); ?>
@@ -98,7 +90,7 @@
 <script>
 	$(document).ready(function(){
 	
-		$(".cateNew").change(function(){
+		/* $(".cateNew").change(function(){
 			var data = $(this).val();
 			if(data == 0)	return false;
 			else{
@@ -114,7 +106,7 @@
 					},
 				});
 			}
-		});
+		}); */
 	
 		$("#submitForm").click(function(){	
 			var cateNew = $(".cate_sub").val()
