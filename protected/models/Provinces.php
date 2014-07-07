@@ -28,7 +28,7 @@ class Provinces extends PIActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('published, ordering', 'numerical', 'integerOnly'=>true),
+			//array('published, ordering', 'numerical', 'integerOnly'=>true),
 			array('title, code', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -54,7 +54,7 @@ class Provinces extends PIActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
+			'title' => 'Tỉnh/Thành phố',
 			'code' => 'Code',
 			'published' => 'Published',
 			'ordering' => 'Ordering',
