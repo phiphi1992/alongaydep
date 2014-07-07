@@ -57,6 +57,7 @@ class CategoriesNews extends PIActiveRecord
 			'alias' => 'Alias',
 			'name' => 'Tên danh mục',
 			'created' => 'Ngày đăng',
+			'parent_id' => 'Danh mục cha',
 		);
 	}
 
@@ -82,7 +83,8 @@ class CategoriesNews extends PIActiveRecord
 		$criteria->compare('alias',$this->alias,true);
 		$criteria->compare('name',$this->name,true);
 		//$criteria->compare('created',$this->created);	
-
+		//$criteria->addCondition("parent_id = 0");
+		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -98,13 +100,15 @@ class CategoriesNews extends PIActiveRecord
 	{
 		return parent::model($className);
 	}
+	
 	public function getDataCategories()
 	{
-		$dataProvider=new CActiveDataProvider('CategoriesNews', array('criteria'=>array('select'=>'id, name')));
+		$dataProvider=new CActiveDataProvider('CategoriesNews', array('criteria'=>array('select'=>'id, name, parent_id')));
 		$arr = $dataProvider->getData();
 		$data_Categories = array();
 		$data_Categories[] = '-- Chọn danh mục tin tức --';
 		foreach($arr as $v){
+			if($v->parent_id == 0)
 				$data_Categories[$v->id] = $v->name;
 		}
 		return $data_Categories;
@@ -121,5 +125,16 @@ class CategoriesNews extends PIActiveRecord
 			$data_Categories[$v->id] = $v->name;
 		}
 		return $data_Categories;
+	}
+	
+	public function linkCategory($id){
+		$cate = CategoriesNews::model()->findByPK($id)->name;
+		$criteria = new CDbCriteria;
+		$criteria->addCondition("parent_id = ".$id);
+		$subCate =  CategoriesNews::model()->find($criteria);
+		if(!empty($subCate)) $subCate = " >> ".$subCate->name;
+		else	 $subCate = '';
+		$link = $cate.$subCate;
+		return $link;
 	}
 }

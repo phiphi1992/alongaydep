@@ -60,7 +60,12 @@
 									'value' => 'isset($data->ward->title) ? $data->ward->title :  ""',
 									'filter' =>CHtml::dropDownList('Hotel[wards]', '', Wards::model()->getData()),
 								),
-								'address',
+								'address' => array(
+									'name' => 'address',
+									'type' => 'raw',
+									'value' => '$data->address',
+									'filter' => false,
+								),
 								'image'=>array(
 									'name' => 'image',
 									'type'=>'raw',

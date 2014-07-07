@@ -35,6 +35,10 @@ class CategoriesNewsController extends Controller
 			$model->attributes=$_POST['CategoriesNews'];
 			$model->created = time();
 			$model->alias = alias($_POST['CategoriesNews']['name']);
+			if(!empty($_POST['CategoriesNews']['parent_id'])){
+				$model->parent_id = $_POST['CategoriesNews']['parent_id'];
+			}else	$model->parent_id = 0;
+
 			if($model->save())
 			{
 				Yii::app()->user->setFlash('success', translate('Thêm thành công.'));
@@ -42,7 +46,9 @@ class CategoriesNewsController extends Controller
 			}
 		}
 		
-		$this->render('create', array('model'=>$model));
+		$arrCate = CategoriesNews:: model()->getDataCategories();
+		
+		$this->render('create', array('model'=>$model, 'arrCate' => $arrCate));
 	}
 	
 	public function actionUpdate($id = null)
@@ -54,7 +60,9 @@ class CategoriesNewsController extends Controller
 			
 			$model->attributes=$_POST['CategoriesNews'];
 			$model->created = time();
-			
+			if(!empty($_POST['CategoriesNews']['parent_id'])){
+				$model->parent_id = $_POST['CategoriesNews']['parent_id'];
+			}else	$model->parent_id = 0;
 			if($model->save())
 			{
 				Yii::app()->user->setFlash('success', translate('Cập nhập thành công.'));
@@ -62,7 +70,9 @@ class CategoriesNewsController extends Controller
 			}
 		}
 		
-		$this->render('update', array('model'=>$model));
+		$arrCate = CategoriesNews:: model()->getDataCategories();
+		
+		$this->render('update', array('model'=>$model, 'arrCate' => $arrCate));
 	}
 	
 	public function loadModel($id)
