@@ -30,7 +30,6 @@
 					'htmlOptions'=>array('class'=>'form-horizontal', 'enctype'=>'multipart/form-data'),
 				)); ?>
 					<h4><?php echo yii::app()->user->getFlash('success'); ?></h4>
-					
 					<div class="control-group">
 						<?php echo $form->labelEx($model,'parent_id',array('class'=>'control-label')); ?>
 						<div class="controls">
@@ -38,7 +37,6 @@
 							<?php echo $form->error($model,'parent_id'); ?>
 						</div>
 					</div>
-					
 					<div class="control-group">
 						<?php echo $form->labelEx($model,'name',array('class'=>'control-label')); ?>
 						<div class="controls">

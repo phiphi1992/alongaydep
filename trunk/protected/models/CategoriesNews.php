@@ -128,13 +128,12 @@ class CategoriesNews extends PIActiveRecord
 	}
 	
 	public function linkCategory($id){
-		$cate = CategoriesNews::model()->findByPK($id)->name;
-		$criteria = new CDbCriteria;
-		$criteria->addCondition("parent_id = ".$id);
-		$subCate =  CategoriesNews::model()->find($criteria);
-		if(!empty($subCate)) $subCate = " >> ".$subCate->name;
-		else	 $subCate = '';
-		$link = $cate.$subCate;
+		$cate = CategoriesNews::model()->findByPK($id);
+		if($cate->parent_id != 0){
+			$category = CategoriesNews::model()->findByPK($cate->parent_id);
+			$subCate = $cate->name;
+			$link = $category->name." >> ".$subCate;
+		}else	$link = $cate->name;
 		return $link;
 	}
 }
