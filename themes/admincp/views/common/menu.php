@@ -121,6 +121,12 @@
 			</li>
 		</ul>
 	</li>
+	<li <?php if(curCA('controller') == 'bill' || curCA('controller')=='billDetail' ) echo 'class="active"'?>>
+		<a href="<?php echo PIUrl::createUrl('/admin/bill');?>">
+			<i class="icon-desktop"></i>
+			<span class="menu-text"> Quản lý giỏ hàng </span>
+		</a>
+	</li>
 	<li <?php if(curCA('controller') == 'post') echo 'class="active"'?>>
 		<a href="<?php echo PIUrl::createUrl('/admin/post');?>">
 			<i class="icon-desktop"></i>
