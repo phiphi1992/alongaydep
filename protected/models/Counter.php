@@ -58,6 +58,7 @@ class Counter extends CActiveRecord
 			'week' => 'Số lượt truy cập trong tuần',
 			'month' => 'Số lượt truy cập trong tháng',
 			'current' => 'Số thành viên đang online',
+			'year' => 'Số lượt truy cập trong năm',
 		);
 	}
 

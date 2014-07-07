@@ -24442,3 +24442,759 @@ in D:\xampp\htdocs\project\alongaydep\index.php (12)
 in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\SupportController.php (36)
 in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
 in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 01:25:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/frontend/images/favicon.ico".' in D:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/frontend...')
+#1 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\project\alongaydep\index.php(12): CApplication->run()
+#3 {main}
+REQUEST_URI=/alongaydep/themes/frontend/images/favicon.ico
+---
+2014/07/07 01:25:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/frontend/images/line-top.png".' in D:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/frontend...')
+#1 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\project\alongaydep\index.php(12): CApplication->run()
+#3 {main}
+REQUEST_URI=/alongaydep/themes/frontend/images/line-top.png
+HTTP_REFERER=http://project.local.com/alongaydep/themes/frontend/stylesheet/common.css
+---
+2014/07/07 01:25:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/frontend/stylesheet/segoeui.ttf".' in D:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/frontend...')
+#1 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\project\alongaydep\index.php(12): CApplication->run()
+#3 {main}
+REQUEST_URI=/alongaydep/themes/frontend/stylesheet/segoeui.ttf
+HTTP_REFERER=http://project.local.com/alongaydep/themes/frontend/stylesheet/common.css
+---
+2014/07/07 01:25:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/frontend/images/favicon.ico".' in D:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/frontend...')
+#1 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\project\alongaydep\index.php(12): CApplication->run()
+#3 {main}
+REQUEST_URI=/alongaydep/themes/frontend/images/favicon.ico
+---
+2014/07/07 01:44:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/bill".' in D:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/bill')
+#1 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\project\alongaydep\index.php(12): CApplication->run()
+#3 {main}
+REQUEST_URI=/alongaydep/admin/bill
+HTTP_REFERER=http://project.local.com/alongaydep/admin/
+---
+2014/07/07 02:02:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\BillController.php:32
+Stack trace:
+#0 D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\BillController.php(38): BillController->loadModel('1')
+#1 [internal function]: BillController->actionDelete('1')
+#2 D:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(BillController), Array)
+#3 D:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(BillController), Object(ReflectionMethod), Array)
+#4 D:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php(37): CFilter->filter(Object(CFilterChain))
+#8 D:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): RController->filterRights(Object(CFilterChain))
+#9 D:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 D:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#13 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/bill/dele...')
+#14 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 D:\xampp\htdocs\project\alongaydep\index.php(12): CApplication->run()
+#16 {main}
+REQUEST_URI=/alongaydep/admin/bill/delete/id/1?ajax=bill-grid
+HTTP_REFERER=http://project.local.com/alongaydep/admin/bill
+---
+2014/07/07 02:02:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\BillController.php:32
+Stack trace:
+#0 D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\BillController.php(38): BillController->loadModel('1')
+#1 [internal function]: BillController->actionDelete('1')
+#2 D:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(BillController), Array)
+#3 D:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(BillController), Object(ReflectionMethod), Array)
+#4 D:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php(37): CFilter->filter(Object(CFilterChain))
+#8 D:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): RController->filterRights(Object(CFilterChain))
+#9 D:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 D:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#13 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/bill/dele...')
+#14 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 D:\xampp\htdocs\project\alongaydep\index.php(12): CApplication->run()
+#16 {main}
+REQUEST_URI=/alongaydep/admin/bill/delete/id/1?ajax=bill-grid
+HTTP_REFERER=http://project.local.com/alongaydep/admin/bill
+---
+2014/07/07 02:09:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/billDetail".' in D:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/billDetai...')
+#1 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\project\alongaydep\index.php(12): CApplication->run()
+#3 {main}
+REQUEST_URI=/alongaydep/admin/billDetail/3
+HTTP_REFERER=http://project.local.com/alongaydep/admin/bill/index
+---
+2014/07/07 02:12:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/billDetail".' in D:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/billDetai...')
+#1 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\project\alongaydep\index.php(12): CApplication->run()
+#3 {main}
+REQUEST_URI=/alongaydep/admin/billDetail/3
+HTTP_REFERER=http://project.local.com/alongaydep/admin/bill/index
+---
+2014/07/07 02:36:49 [error] [php] Object of class BillDetail could not be converted to string (D:\xampp\htdocs\yii\framework\db\schema\CDbCommandBuilder.php:481)
+Stack trace:
+#0 D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\BillController.php(43): BillDetail->deleteAll()
+#1 unknown(0): BillController->actionDelete()
+#2 D:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#3 D:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 D:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): BillController->runAction()
+#6 D:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php(37): RightsFilter->filter()
+#8 D:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): BillController->filterRights()
+#9 D:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 D:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\xampp\htdocs\yii\framework\web\CController.php(265): BillController->runActionWithFilters()
+#12 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): BillController->run()
+#13 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 D:\xampp\htdocs\project\alongaydep\index.php(12): CWebApplication->run()
+REQUEST_URI=/alongaydep/admin/bill/delete/id/3?ajax=bill-grid
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\BillController.php (43)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 02:37:06 [error] [php] Object of class BillDetail could not be converted to string (D:\xampp\htdocs\yii\framework\db\schema\CDbCommandBuilder.php:481)
+Stack trace:
+#0 D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\BillController.php(43): BillDetail->deleteAll()
+#1 unknown(0): BillController->actionDelete()
+#2 D:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#3 D:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 D:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): BillController->runAction()
+#6 D:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php(37): RightsFilter->filter()
+#8 D:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): BillController->filterRights()
+#9 D:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 D:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\xampp\htdocs\yii\framework\web\CController.php(265): BillController->runActionWithFilters()
+#12 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): BillController->run()
+#13 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 D:\xampp\htdocs\project\alongaydep\index.php(12): CWebApplication->run()
+REQUEST_URI=/alongaydep/admin/bill/delete/id/3?ajax=bill-grid
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\BillController.php (43)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 02:41:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/frontend/stylesheet/segoeui.ttf".' in D:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/frontend...')
+#1 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\project\alongaydep\index.php(12): CApplication->run()
+#3 {main}
+REQUEST_URI=/alongaydep/themes/frontend/stylesheet/segoeui.ttf
+HTTP_REFERER=http://project.local.com/alongaydep/themes/frontend/stylesheet/common.css
+---
+2014/07/07 02:41:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/frontend/images/line-top.png".' in D:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/frontend...')
+#1 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\project\alongaydep\index.php(12): CApplication->run()
+#3 {main}
+REQUEST_URI=/alongaydep/themes/frontend/images/line-top.png
+HTTP_REFERER=http://project.local.com/alongaydep/themes/frontend/stylesheet/common.css
+---
+2014/07/07 02:50:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/frontend/images/line-top.png".' in D:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/frontend...')
+#1 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\project\alongaydep\index.php(12): CApplication->run()
+#3 {main}
+REQUEST_URI=/alongaydep/themes/frontend/images/line-top.png
+HTTP_REFERER=http://project.local.com/alongaydep/themes/frontend/stylesheet/common.css
+---
+2014/07/07 02:50:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/frontend/stylesheet/segoeui.ttf".' in D:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/frontend...')
+#1 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\project\alongaydep\index.php(12): CApplication->run()
+#3 {main}
+REQUEST_URI=/alongaydep/themes/frontend/stylesheet/segoeui.ttf
+HTTP_REFERER=http://project.local.com/alongaydep/themes/frontend/stylesheet/common.css
+---
+2014/07/07 03:02:25 [error] [php] mysql_num_rows() expects parameter 1 to be resource, boolean given (D:\xampp\htdocs\project\alongaydep\protected\components\Controller.php:111)
+Stack trace:
+#0 D:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): BillController->actionIndex()
+#1 D:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 D:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): BillController->runAction()
+#3 D:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php(37): RightsFilter->filter()
+#5 D:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): BillController->filterRights()
+#6 D:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 D:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 D:\xampp\htdocs\yii\framework\web\CController.php(265): BillController->runActionWithFilters()
+#9 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): BillController->run()
+#10 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 D:\xampp\htdocs\project\alongaydep\index.php(12): CWebApplication->run()
+REQUEST_URI=/alongaydep/admin/bill
+in D:\xampp\htdocs\project\alongaydep\protected\components\Controller.php (111)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\BillController.php (19)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+2014/07/07 03:03:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/frontend/images/line-top.png".' in D:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/frontend...')
+#1 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\project\alongaydep\index.php(12): CApplication->run()
+#3 {main}
+REQUEST_URI=/alongaydep/themes/frontend/images/line-top.png
+HTTP_REFERER=http://project.local.com/alongaydep/themes/frontend/stylesheet/common.css
+---
+2014/07/07 03:03:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/frontend/stylesheet/segoeui.ttf".' in D:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/frontend...')
+#1 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\project\alongaydep\index.php(12): CApplication->run()
+#3 {main}
+REQUEST_URI=/alongaydep/themes/frontend/stylesheet/segoeui.ttf
+HTTP_REFERER=http://project.local.com/alongaydep/themes/frontend/stylesheet/common.css
+---
+2014/07/07 03:06:10 [warning] [application] Failed to set unsafe attribute "year" of "Counter".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\CounterController.php (24)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:07:00 [warning] [application] Failed to set unsafe attribute "year" of "Counter".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\CounterController.php (24)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:07:54 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:07:57 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:07:59 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:08:02 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:08:04 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:08:10 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:08:13 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:08:15 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:08:55 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:09:02 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:12:06 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:12:08 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:12:11 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:12:18 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:13:04 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:13:09 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:13:18 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:13:22 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:13:25 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:14:17 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:14:19 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:14:22 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:14:28 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:16:13 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:16:19 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:16:21 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:16:24 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:16:30 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:16:46 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:18:35 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:18:38 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:19:31 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:19:51 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:19:55 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:19:58 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:20:01 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:22:46 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:22:49 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:22:59 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:23:12 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:25:10 [error] [php] Use of undefined constant attributes - assumed 'attributes' (D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php:25)
+Stack trace:
+#0 D:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): NewsController->runAction()
+#1 D:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php(37): RightsFilter->filter()
+#3 D:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): NewsController->filterRights()
+#4 D:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 D:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\yii\framework\web\CController.php(265): NewsController->runActionWithFilters()
+#7 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): NewsController->run()
+#8 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\project\alongaydep\index.php(12): CWebApplication->run()
+REQUEST_URI=/alongaydep/admin/news
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (25)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:25:28 [error] [php] Array to string conversion (D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php:25)
+Stack trace:
+#0 D:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): NewsController->runAction()
+#1 D:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php(37): RightsFilter->filter()
+#3 D:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): NewsController->filterRights()
+#4 D:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 D:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\yii\framework\web\CController.php(265): NewsController->runActionWithFilters()
+#7 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): NewsController->run()
+#8 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\project\alongaydep\index.php(12): CWebApplication->run()
+REQUEST_URI=/alongaydep/admin/news
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (25)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:25:28 [error] [php] Array to string conversion (D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php:25)
+Stack trace:
+#0 D:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): NewsController->runAction()
+#1 D:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php(37): RightsFilter->filter()
+#3 D:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): NewsController->filterRights()
+#4 D:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 D:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\yii\framework\web\CController.php(265): NewsController->runActionWithFilters()
+#7 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): NewsController->run()
+#8 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\project\alongaydep\index.php(12): CWebApplication->run()
+REQUEST_URI=/alongaydep/admin/news
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (25)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:25:52 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:26:29 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:27:06 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:27:17 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:28:19 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:29:00 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:29:05 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:29:15 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:29:18 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:29:24 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:29:54 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:30:34 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:31:14 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:31:17 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:31:20 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:31:40 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:31:43 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:34:18 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:34:22 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:34:55 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:34:59 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:35:02 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:35:06 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:35:11 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:35:13 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:35:16 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:35:18 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:35:40 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:35:47 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:35:50 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:35:54 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:35:56 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:35:59 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:36:02 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:42:05 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:43:17 [error] [php] Missing argument 1 for SubCategoryNews::getDataCategories(), called in D:\xampp\htdocs\project\alongaydep\themes\admincp\views\admin\news\index.php on line 55 and defined (D:\xampp\htdocs\project\alongaydep\protected\models\SubCategoryNews.php:108)
+Stack trace:
+#0 D:\xampp\htdocs\yii\framework\web\CBaseController.php(95): NewsController->renderInternal()
+#1 D:\xampp\htdocs\yii\framework\web\CController.php(869): NewsController->renderFile()
+#2 D:\xampp\htdocs\yii\framework\web\CController.php(782): NewsController->renderPartial()
+#3 D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php(29): NewsController->render()
+#4 D:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): NewsController->actionIndex()
+#5 D:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 D:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): NewsController->runAction()
+#7 D:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php(37): RightsFilter->filter()
+#9 D:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): NewsController->filterRights()
+#10 D:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#11 D:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 D:\xampp\htdocs\yii\framework\web\CController.php(265): NewsController->runActionWithFilters()
+#13 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): NewsController->run()
+#14 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 D:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#16 D:\xampp\htdocs\project\alongaydep\index.php(12): CWebApplication->run()
+REQUEST_URI=/alongaydep/admin/news
+in D:\xampp\htdocs\project\alongaydep\protected\models\SubCategoryNews.php (108)
+in D:\xampp\htdocs\project\alongaydep\themes\admincp\views\admin\news\index.php (55)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (29)
+2014/07/07 03:43:59 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:01 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:04 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:09 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:11 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:14 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:16 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:19 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:22 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:25 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:27 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:29 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:32 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:34 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:37 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:42 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:44 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:47 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:49 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:44:52 [warning] [application] Failed to set unsafe attribute "sub_category_id" of "News".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\NewsController.php (23)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:45:14 [warning] [application] Failed to set unsafe attribute "group_support_id" of "Support".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\SupportController.php (24)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:45:16 [warning] [application] Failed to set unsafe attribute "group_support_id" of "Support".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\SupportController.php (24)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:45:19 [warning] [application] Failed to set unsafe attribute "group_support_id" of "Support".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\SupportController.php (24)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:45:34 [warning] [application] Failed to set unsafe attribute "group_support_id" of "Support".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\SupportController.php (24)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:47:39 [warning] [application] Failed to set unsafe attribute "group_support_id" of "Support".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\SupportController.php (24)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:47:41 [warning] [application] Failed to set unsafe attribute "group_support_id" of "Support".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\SupportController.php (24)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:47:43 [warning] [application] Failed to set unsafe attribute "group_support_id" of "Support".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\SupportController.php (24)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:50:44 [warning] [application] Failed to set unsafe attribute "group_support_id" of "Support".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\SupportController.php (24)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:50:47 [warning] [application] Failed to set unsafe attribute "group_support_id" of "Support".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\SupportController.php (24)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:50:52 [warning] [application] Failed to set unsafe attribute "group_support_id" of "Support".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\SupportController.php (24)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:51:00 [warning] [application] Failed to set unsafe attribute "group_support_id" of "Support".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\SupportController.php (24)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:51:02 [warning] [application] Failed to set unsafe attribute "group_support_id" of "Support".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\SupportController.php (24)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:51:05 [warning] [application] Failed to set unsafe attribute "group_support_id" of "Support".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\SupportController.php (24)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:51:07 [warning] [application] Failed to set unsafe attribute "group_support_id" of "Support".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\SupportController.php (24)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:51:10 [warning] [application] Failed to set unsafe attribute "group_support_id" of "Support".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\SupportController.php (24)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:51:12 [warning] [application] Failed to set unsafe attribute "group_support_id" of "Support".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\SupportController.php (24)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:51:25 [warning] [application] Failed to set unsafe attribute "image" of "Informations".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\InformationsController.php (40)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)
+2014/07/07 03:51:32 [warning] [application] Failed to set unsafe attribute "image" of "Informations".
+in D:\xampp\htdocs\project\alongaydep\protected\modules\admin\controllers\InformationsController.php (40)
+in D:\xampp\htdocs\project\alongaydep\protected\modules\rights\components\RController.php (37)
+in D:\xampp\htdocs\project\alongaydep\index.php (12)

@@ -17,6 +17,11 @@ class Controller extends RController
 	public $arrSystem = array();
 	public $arrInfo = array();
 	public $arrCategoryNew = array();
+	
+	public $db_host = 'localhost';
+	public $db_user = 'root';
+	public $db_pass = '';
+	public $db_data = 'alongaydep'; 
 
 	
 	// use for popup schedule
@@ -70,6 +75,48 @@ class Controller extends RController
 		}
 
 		return rtrim($matches[0]).$end_char;
+	}
+	
+	// function thống kê số lượt truy cập
+	public function counter(){
+	
+		// connect to db
+		$con = mysqli_connect($this->db_host, $this->db_user, $this->db_pass, $this->db_data);
+		$time_now = time();
+		$time_out = 30;
+		$ip = $_SERVER['SERVER_ADDR'];
+		$result = mysqli_query($con, "SELECT `ip` FROM `user_online` WHERE UNIX_TIMESTAMP(`last_visit`) + $time_out > $time_now AND `ip` = '$ip'");
+		if (!mysqli_num_rows($result))
+			mysqli_query($con, "INSERT INTO `user_online` VALUES ('$ip', NOW())");
+		
+		// đếm số người đang online
+		$result = mysqli_query($con, "SELECT `ip` FROM `user_online` WHERE UNIX_TIMESTAMP(`last_visit`) + $time_out > $time_now");
+		$online = mysqli_num_rows($result);
+		
+		// số lượt truy cập theo ngày
+		$result = mysqli_query($con, "SELECT `ip` FROM `user_online` WHERE DAYOFYEAR(`last_visit`) = " . (date('z') + 1) . " AND YEAR(`last_visit`) = " . date('Y'));
+		$day = mysqli_num_rows($result);
+		
+		// số lượt truy cập trong tuần
+		$resutl = mysqli_query($con, "SELECT `ip` FROM `user_online` WHERE WEEKOFYEAR(`last_visit`) = " . date('W') . " AND YEAR(`last_visit`) = " . date('Y'));
+		$week = mysqli_num_rows($resutl);
+		
+		// số lượt truy cập trong tháng
+		$result = mysqli_query($con, "SELECT `ip` FROM `user_online` WHERE MONTH(`last_visit`) = " . date('n') . " AND YEAR(`last_visit`) = " . date('Y'));
+		$month = mysqli_num_rows($result);
+		
+		// đếm số người truy cập trong năm
+		$result = mysqli_query($con, "SELECT `ip` FROM `user_online` WHERE YEAR(`last_visit`) = " . date('Y'));
+		$year = mysqli_num_rows($result);
+		
+		$arrData = array(
+			'online' => $online,
+			'day' => $day,
+			'week' => $week,
+			'month' => $month,
+			'year' => $year,
+		);
+		return $arrData;
 	}
 	
 	/**
