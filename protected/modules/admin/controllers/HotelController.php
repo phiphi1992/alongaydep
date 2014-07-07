@@ -1,6 +1,6 @@
 <?php
 
-class NewsController extends Controller
+class HotelController extends Controller
 {
 	public function filters()
 	{
@@ -16,11 +16,12 @@ class NewsController extends Controller
 	
 	public function actionIndex()
 	{
-		$model = new News('search');
+		
+		$model = new Hotel('search');
 		$model->unsetAttributes();  // clear any default values
 		
-		if(isset($_GET['News']))
-			$model->attributes=$_GET['News'];
+		if(isset($_GET['Hotel']))
+			$model->attributes=$_GET['Hotel'];
 
 		$this->render('index',array(
 			'model'=>$model,
@@ -28,17 +29,17 @@ class NewsController extends Controller
 	}
 	public function actionCreate($id = null)
 	{
-		$model = new News; 
+		$model = new Hotel; 
 		
 		$flag = 0;
-		if(!empty($_POST['News'])){
+		if(!empty($_POST['Hotel'])){
 		
 			$image_old = $model->attributes['image'];
 			
 			if(!empty(CUploadedFile::getInstance($model,'image')->name))
 			{
 				$image_old = $model->attributes['image'];
-				$model->attributes = $_POST['News'];
+				$model->attributes = $_POST['Hotel'];
 				$model->image = CUploadedFile::getInstance($model,'image');
 				$image = $model->image;
 				$imageType = explode('.',$model->image->name);
@@ -49,54 +50,62 @@ class NewsController extends Controller
 				$flag = 1;
 			}else{
 				
-				$model->attributes = $_POST['News'];
+				$model->attributes = $_POST['Hotel'];
 				$model->image = $image_old;
 			}
-			$model->category_news_id = $_POST['News']['category_news_id'];
-			$model->sub_category_id =  $_POST['sub_category'];
-			$model->created = time();
-			$model->alias = alias($_POST['News']['name']);
 			
+			$model->provinces = $_POST['provinces'];
+			$model->wards = $_POST['wards'];
+			$model->created = time();
+			$model->alias = alias($_POST['Hotel']['name']);
+
 			if($model->save()){
-				Yii::app()->user->setFlash('success', translate('Thêm thành công.'));
+				Yii::app()->user->setFlash('success', translate('Thêm khách sạn thành công.'));
 
 				if($flag == 1)
 				{
 					$image->saveAs($images_path);	
 				}
 				
-				$this->redirect(PIUrl::createUrl('/admin/news/'));
+				$this->redirect(PIUrl::createUrl('/admin/hotel/'));
 			}
 		}
-		$dataCategories = CategoriesNews::model()->getDataCategories();
-		$this->render('create', array('model'=>$model, 'dataCategories'=>$dataCategories));
+		
+		$criteria = new CDBCriteria;
+		$criteria->select = "id, title";
+		$provinces = Provinces::model()->findAll($criteria);
+		
+		$ward = new Wards;
+		$wards = $ward->getWards(57);
+		$typeHotel = Hotel::model()->getTypeHotel();
+
+		$this->render('create', array(
+			'model'=>$model,
+			'provinces' => $provinces,
+			'wards' => $wards,
+			'typeHotel' => $typeHotel,
+		));
 	}
 	
-	public function actionGetCate($id = null){
-		$criteria = new CDBCriteria();
-		$criteria->addCondition('category_new_id = '.$id);
-		$criteria->select = 'id, name';
-		$arr_cate = SubCategoryNews::model()->findAll($criteria);
-		$arrData = array();
-		foreach($arr_cate as $cate){
-			$arrData[] = array('id'=>$cate->id, 'name'=>$cate->name);
-		}
-		echo json_encode($arrData);
+	public function actionGetWards($id){
+		$ward = new Wards;
+		$wards = $ward->getWards1($id);
+		echo json_encode($wards);
 	}
 	
 	public function actionUpdate($id = null)
 	{
-		$model = News::model()->findByPk($id);
+		$model = Hotel::model()->findByPk($id);
 		$flag  = 0;
 		$image_old = $model->attributes['image'];
-		if(!empty($_POST['News'])){
+		if(!empty($_POST['Hotel'])){
 		
 			if(!empty(CUploadedFile::getInstance($model,'image')->name))
 			{
 				$image_old = $model->attributes['image'];
 				$path = realpath(Yii::app()->basePath.'/../upload/images/'.$image_old);
 				if(file_exists($path) && !empty($image_old)) unlink($path);
-				$model->attributes = $_POST['News'];
+				$model->attributes = $_POST['Hotel'];
 				$model->image = CUploadedFile::getInstance($model,'image');
 				$image = $model->image;
 				$imageType = explode('.',$model->image->name);
@@ -106,51 +115,46 @@ class NewsController extends Controller
 				$images_path = Yii::getPathOfAlias('webroot').'/upload/images/'.$imageName;
 				$flag = 1;
 			}else{
-				$model->attributes = $_POST['News'];
+				$model->attributes = $_POST['Hotel'];
 				$model->image = $image_old;
 			}
 			
-			$model->category_news_id = $_POST['News']['category_news_id'];
-			$model->sub_category_id =  $_POST['sub_category'];
+			$model->provinces = $_POST['provinces'];
+			$model->wards = $_POST['wards'];
 			$model->created = time();
-			$model->alias = alias($_POST['News']['name']);
+			$model->alias = alias($_POST['Hotel']['name']);
 			
-			if($model->category_news_id == 1){
-				if($model->save()){
-					Yii::app()->user->setFlash('success', translate('Sửa thành công.'));
+			if($model->save()){
+				Yii::app()->user->setFlash('success', translate('Cập nhập khách sạn thành công.'));
 
-					if($flag == 1)
-					{
-						$image->saveAs($images_path);	
-					}
-					
-					$this->redirect(PIUrl::createUrl('/admin/news/',array("id"=>1,"type"=>1)));
+				if($flag == 1)
+				{
+					$image->saveAs($images_path);	
 				}
-			}else{
-				if($model->save()){
-					Yii::app()->user->setFlash('success', translate('Sửa thành công.'));
-
-					if($flag == 1)
-					{
-						$image->saveAs($images_path);	
-					}
-					
-					$this->redirect(PIUrl::createUrl('/admin/news/',array("type"=>2)));
-				}
+				
+				$this->redirect(PIUrl::createUrl('/admin/hotel/'));
 			}
 		}
-		$dataCategories = CategoriesNews::model()->getDataCategories();
-		$dataSubCate = SubCategoryNews::model()->getDataCategories($model->category_news_id);
+		$criteria = new CDBCriteria;
+		$criteria->select = "id, title";
+		$provinces = Provinces::model()->findAll($criteria);
 		
-		$this->render('update', array('model'=>$model, 
-				'dataCategories'=>$dataCategories,
-				'dataSubCate' => $dataSubCate,
-			));
+		$ward = new Wards;
+		$wards = $ward->getWards($model->provinces);
+		$typeHotel = Hotel::model()->getTypeHotel();
+
+		
+		$this->render('update', array(
+			'model'=>$model,
+			'provinces' => $provinces,
+			'wards' => $wards,
+			'typeHotel' => $typeHotel,
+		));
 	}
 	
 	public function loadModel($id)
 	{
-		$model=News::model()->findByPk($id);
+		$model=Hotel::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -204,6 +208,6 @@ class NewsController extends Controller
 			$model->delete();
 		}
 		Yii::app()->user->setFlash('success', translate('Xóa thành công.'));
-		$this->redirect(PIUrl::createUrl('/admin/news/1/'));
+		$this->redirect(PIUrl::createUrl('/admin/Hotel/1/'));
 	}
 }

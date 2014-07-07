@@ -71,7 +71,7 @@
 			</li>
 		</ul>
 	</li>
-	<li <?php if(curCA('controller') == 'categoriesNews' ||  curCA('controller') == 'news'  && ( isset($_GET['type']) && $_GET['type']==2))  echo 'class="active"'?>>
+	<li <?php if(curCA('controller') == 'categoriesNews' ||  curCA('controller') == 'news' ||  curCA('controller') == 'subCategoryNews')  echo 'class="active"'?>>
 		<a href="#" class="dropdown-toggle">
 			<i class="icon-text-width"></i>
 			<span class="menu-text"> Tin tức</span>
@@ -86,14 +86,60 @@
 				</a>
 			</li>
 			<li>
-				<a href="<?php echo PIUrl::createUrl('/admin/news/',array('type'=>2));?>">
+				<a href="<?php echo PIUrl::createUrl('/admin/subCategoryNews/');?>" class="dropdown-toggle">
+					<i class="icon-double-angle-right"></i>
+					Danh mục con
+				</a>
+			</li>
+			<li>
+				<a href="<?php echo PIUrl::createUrl('/admin/news/');?>">
 					<i class="icon-double-angle-right"></i>
 					Danh sách tin tức
 				</a>
 			</li>
 		</ul>
 	</li>
-	<li <?php if(curCA('controller') == 'slides')  echo 'class="active"'?>>
+	<li <?php if(curCA('controller') == 'productCategory' ||  curCA('controller') == 'product' )  echo 'class="active"'?>>
+		<a href="#" class="dropdown-toggle">
+			<i class="icon-text-width"></i>
+			<span class="menu-text"> Sản phẩm</span>
+			<b class="arrow icon-angle-down"></b>
+		</a>
+		
+		<ul class="submenu">
+			<li>
+				<a href="<?php echo PIUrl::createUrl('/admin/productCategory/');?>" class="dropdown-toggle">
+					<i class="icon-double-angle-right"></i>
+					Danh mục sản phẩm
+				</a>
+			</li>
+			<li>
+				<a href="<?php echo PIUrl::createUrl('/admin/product/');?>" class="dropdown-toggle">
+					<i class="icon-double-angle-right"></i>
+					Dánh sách sản phẩm
+				</a>
+			</li>
+		</ul>
+	</li>
+	<li <?php if(curCA('controller') == 'post') echo 'class="active"'?>>
+		<a href="<?php echo PIUrl::createUrl('/admin/post');?>">
+			<i class="icon-desktop"></i>
+			<span class="menu-text"> Album </span>
+		</a>
+	</li>
+	<li <?php if(curCA('controller') == 'hotel') echo 'class="active"'?>>
+		<a href="<?php echo PIUrl::createUrl('/admin/hotel');?>">
+			<i class="icon-desktop"></i>
+			<span class="menu-text"> Danh bạ khách sạn </span>
+		</a>
+	</li>
+	<li <?php if(curCA('controller') == 'counter') echo 'class="active"'?>>
+		<a href="<?php echo PIUrl::createUrl('/admin/counter');?>">
+			<i class="icon-file-alt"></i>
+			<span class="menu-text"> Quản lý truy cập </span>
+		</a>
+	</li>
+	<!--<li <?php if(curCA('controller') == 'slides')  echo 'class="active"'?>>
 		<a href="#" class="dropdown-toggle">
 			<i class="icon-text-width"></i>
 			<span class="menu-text"> Hình ảnh</span>
@@ -120,7 +166,7 @@
 				</a>
 			</li>
 		</ul>
-	</li>
+	</li>-->
 	<li <?php if(curCA('controller') == 'contact' && (curCA('action') == 'index' ||  curCA('action') == 'update')) echo 'class="active"'?>>
 		<a href="<?php echo PIUrl::createUrl('/admin/contact');?>">
 			<i class="icon-file-alt"></i>

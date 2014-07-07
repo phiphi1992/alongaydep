@@ -9,65 +9,87 @@
 					<i class="icon-angle-right arrow-icon"></i>
 				</span>
 			</li>
-			<li class="active"><?php echo translate('Tin tức');?></li>
+			<li class="active"><?php echo translate('Danh bạ khách sạn');?></li>
 		</ul>
 	</div>
 
 	<div class="page-content">
 		<div class="page-header position-relative">
 			<h1>
-				<?php echo translate('Câp nhập tin tức');?>
+				<?php echo translate('Cập nhập khách sạn');?>
 			</h1>
 		</div><!--/.page-header-->
 		<div class="row-fluid">
 			<div class="span12">
 				<!--PAGE CONTENT BEGINS-->
 				<?php $form = $this->beginWidget('CActiveForm', array(
-					'id'=>'news-form',
+					'id'=>'hotel-form',
 					//'enableAjaxValidation'=>true,
 					'enableClientValidation'=>true,
 					'focus'=>array($model,'title'),
 					'htmlOptions'=>array('class'=>'form-horizontal', 'enctype'=>'multipart/form-data'),
 				)); ?>
 					
-					<div class="control-group">
-						<?php echo $form->labelEx($model,'category_news_id',array('class'=>'control-label')); ?>
-						<div class="controls">
-							<?php echo $form->dropDownList($model,'category_news_id',$dataCategories, array('class'=>'span12 cateNew')); ?>
-							<?php echo $form->error($model,'category_news_id'); ?>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label">Danh mục con</label>
-						<div class="controls">
-							<select name="sub_category" class="span12 cate_sub">
-								<?php foreach($dataSubCate as $k=>$v){ ?>
-									<option value="<?php echo $k ?>" <?php echo ($k == $model->	sub_category_id) ? 'selected' : ''; ?>><?php echo $v; ?></option>
-								<?php } ?>
-							</select>
-						</div>
-					</div>
+					
 					<div class="control-group">
 						<?php echo $form->labelEx($model,'name',array('class'=>'control-label')); ?>
 						<div class="controls">
-							<?php echo $form->textField($model,'name',array('placeholder'=>'Tên tin tức', 'class'=>'span12')); ?>
+							<?php echo $form->textField($model,'name',array('placeholder'=>'Tên khách sạn', 'class'=>'span12')); ?>
 							<?php echo $form->error($model,'name'); ?>
 						</div>
 					</div>
 					
 					<div class="control-group">
-						<?php echo $form->labelEx($model,'description',array('class'=>'control-label')); ?>
+						<?php echo $form->labelEx($model,'type',array('class'=>'control-label')); ?>
 						<div class="controls">
-							<?php echo $form->textArea($model,'description',array('placeholder'=>'Mô tả', 'class'=>'span12')); ?>
-							<?php echo $form->error($model,'description'); ?>
+							<?php echo $form->dropDownList($model,'type',$typeHotel, array('class'=>'span12 typeHotel')); ?>
+							<?php echo $form->error($model,'type'); ?>
 						</div>
 					</div>
-
+					
 					<div class="control-group">
-						<?php echo $form->labelEx($model,'content',array('class'=>'control-label')); ?>
+						<label class="control-label">Tỉnh/Thành phố</label>
 						<div class="controls">
-							<?php echo $form->textArea($model,'content',array('placeholder'=>'Nội dung', 'class'=>'ckeditor ')); ?>
-							<?php echo $form->error($model,'content'); ?>
+							<select class="span12 provinces" name="provinces">
+								<?php foreach($provinces as $pro){ ?>
+									<option value="<?php echo $pro->id; ?>" <?php echo ($pro->id==$model->provinces) ? 'selected' : ''; ?>><?php echo $pro->title; ?></option>
+								<?php } ?>
+							</select>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label">Quận/Huyện</label>
+						<div class="controls">
+							<select class="span12 wards" name="wards">
+								<?php foreach($wards as $k=>$v){ ?>
+									<option value="<?php echo $k; ?>"><?php echo $v; ?></option>
+								<?php } ?>
+							</select>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<?php echo $form->labelEx($model,'address',array('class'=>'control-label')); ?>
+						<div class="controls">
+							<?php echo $form->textArea($model,'address',array('placeholder'=>'Địa chỉ', 'class'=>'span12')); ?>
+							<?php echo $form->error($model,'address'); ?>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<?php echo $form->labelEx($model,'email',array('class'=>'control-label')); ?>
+						<div class="controls">
+							<?php echo $form->textField($model,'email',array('placeholder'=>'Địa chỉ email', 'class'=>'span12')); ?>
+							<?php echo $form->error($model,'email'); ?>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<?php echo $form->labelEx($model,'phone',array('class'=>'control-label')); ?>
+						<div class="controls">
+							<?php echo $form->textField($model,'phone',array('placeholder'=>'Điện thoại', 'class'=>'span12')); ?>
+							<?php echo $form->error($model,'phone'); ?>
 						</div>
 					</div>
 					
@@ -108,31 +130,29 @@
 <script>
 	$(document).ready(function(){
 	
-		$(".cateNew").change(function(){
-			var data = $(this).val();
-			if(data == 0)	return false;
-			else{
-				$.ajax({
-					url: "<?php echo PIUrl::createUrl('/admin/news/getCate');?>"+'?id='+data,
-					dataType : 'json',
-					success : function(data){
-						var html = '';
-						for(i=0; i<data.length; i++){
-							html+= "<option value = "+data[i].id+">"+data[i].name+"</option>";
-						}
-						$(".cate_sub").html(html);
-					},
-				});
-			}
+		$(".provinces").change(function(){
+			var id = $(this).val();
+			
+			$.ajax({
+				url : "<?php echo PIUrl::createUrl('/admin/hotel/getWards');?>"+"?id="+id,
+				dataType : "json",
+				success : function(result){
+					var data = "";
+					for(i=0; i<result.length; i++){
+						data+="<option value='" + result[i].id +"'>" +result[i].title + "</option>";
+					}
+					$(".wards").html(data);
+				},
+			});
 		});
 	
 		$("#submitForm").click(function(){	
-			var cateNew = $(".cate_sub").val()
+			var cateNew = $(".typeHotel").val()
 			if(cateNew == 0){
-				alert("Vui lòng chọn danh mục tin tức");
+				alert("Vui lòng loại khách sạn");
 				return false;
 			}else{
-				$("#news-form").submit(function(){
+				$("#hotel-form").submit(function(){
 					$("#submitForm").attr("disabled", true);
 				});
 			}

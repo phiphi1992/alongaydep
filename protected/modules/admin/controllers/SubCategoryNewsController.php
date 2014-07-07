@@ -1,6 +1,6 @@
 <?php
 
-class CategoriesNewsController extends Controller
+class SubCategoryNewsController extends Controller
 {
 	public function filters()
 	{
@@ -16,49 +16,55 @@ class CategoriesNewsController extends Controller
 	
 	public function actionIndex()
 	{
-		$model = new CategoriesNews('search');
+		$model = new SubCategoryNews('search');
 		$model->unsetAttributes();  // clear any default values
 		
-		if(isset($_GET['CategoriesNews']))
-			$model->attributes=$_GET['CategoriesNews'];
+		if(isset($_GET['SubCategoryNews']))
+			$model->attributes=$_GET['SubCategoryNews'];
 
 		$this->render('index',array(
 			'model'=>$model,
 		));
 	}
+	
 	public function actionCreate()
 	{
-		$model = new CategoriesNews;
+		$model = new SubCategoryNews;
 		
-		if(isset($_POST['CategoriesNews']))
+		if(isset($_POST['SubCategoryNews']))
 		{
-			$model->attributes=$_POST['CategoriesNews'];
+			$model->attributes=$_POST['SubCategoryNews'];
 			$model->created = time();
-			$model->alias = alias($_POST['CategoriesNews']['name']);
+			$model->alias = alias($_POST['SubCategoryNews']['name']);
 			if($model->save())
 			{
-				Yii::app()->user->setFlash('success', translate('Thêm thành công.'));
-				$this->redirect(PIUrl::createUrl('/admin/categoriesNews/index'));
+				Yii::app()->user->setFlash('success', translate('Thêm danh mục thành công.'));
+				$this->redirect(PIUrl::createUrl('/admin/subCategoryNews/index'));
 			}
 		}
 		
-		$this->render('create', array('model'=>$model));
+		$arrCate = CategoriesNews:: model()->getDataCategories();
+		
+		$this->render('create', array(
+			'model'=>$model,
+			'arrCate' => $arrCate,
+		));
 	}
 	
 	public function actionUpdate($id = null)
 	{
-		$model = CategoriesNews::model()->findByPk($id);
+		$model = SubCategoryNews::model()->findByPk($id);
 		
-		if(isset($_POST['CategoriesNews']))
+		if(isset($_POST['SubCategoryNews']))
 		{
 			
-			$model->attributes=$_POST['CategoriesNews'];
+			$model->attributes=$_POST['SubCategoryNews'];
 			$model->created = time();
 			
 			if($model->save())
 			{
 				Yii::app()->user->setFlash('success', translate('Cập nhập thành công.'));
-				$this->redirect(PIUrl::createUrl('/admin/categoriesNews/index'));
+				$this->redirect(PIUrl::createUrl('/admin/subCategoryNews/index'));
 			}
 		}
 		
@@ -67,7 +73,7 @@ class CategoriesNewsController extends Controller
 	
 	public function loadModel($id)
 	{
-		$model=CategoriesNews::model()->findByPk($id);
+		$model=SubCategoryNews::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -89,20 +95,8 @@ class CategoriesNewsController extends Controller
 		// Delete all news of category new
 		$model = $this->loadModel($id);
 		if(!empty($model)){
-		
-			// delete sub category
 			$criteria = new CDBCriteria();
-			$criteria->addCondition("category_new_id = {$id}");
-			$criteria->select = "id";
-			$arrSubCateID = SubCategoryNews::model()->findALl($criteria);
-			foreach($arrSubCateID as $cate){
-				$modelCate = SubCategoryNews::model()->find($cate->id);
-				$modelCate->delete();
-			}
-		
-			// delete news
-			$criteria = new CDBCriteria();
-			$criteria->addCondition("category_news_id = {$id}");
+			$criteria->addCondition("sub_category_id = {$id}");
 			$criteria->select = "id";
 			$arrNewID = News::model()->findALl($criteria);
 			foreach($arrNewID as $newId){
@@ -114,7 +108,6 @@ class CategoriesNewsController extends Controller
 				$modelNew->delete();
 			}
 		}
-		
 		// Delete category new
 		$model->delete();
 
@@ -130,24 +123,13 @@ class CategoriesNewsController extends Controller
 			
 			// Delete all news of category new
 			$model = $this->loadModel($arrIdNew[$i]);
-			if(!empty($model)){
-				// delete sub category
-				$criteria = new CDBCriteria();
-				$criteria->addCondition("category_new_id = {$arrIdNew[$i]}");
-				$criteria->select = "id";
-				$arrSubCateID = SubCategoryNews::model()->findALl($criteria);
-				foreach($arrSubCateID as $cate){
-					$modelCate = SubCategoryNews::model()->find($cate->id);
-					$modelCate->delete();
-				}
 			
-				// delete news
+			if(!empty($model)){
 				$criteria = new CDBCriteria();
-				$criteria->addCondition("category_news_id = {$arrIdNew[$i]}");
+				$criteria->addCondition("sub_category_id = {$arrIdNew[$i]}");
 				$criteria->select = "id";
 				$arrNewID = News::model()->findALl($criteria);
 				foreach($arrNewID as $newId){
-				
 					$modelNew = News::model()->find($newId->id);
 					$path = "/../upload/images/";
 					$name = $modelNew->image;

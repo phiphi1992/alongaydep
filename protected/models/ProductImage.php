@@ -1,22 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "categories_news".
+ * This is the model class for table "product_image".
  *
- * The followings are the available columns in table 'categories_news':
+ * The followings are the available columns in table 'product_image':
  * @property integer $id
- * @property string $alias
  * @property string $name
+ * @property integer $product_id
  * @property integer $created
  */
-class CategoriesNews extends PIActiveRecord
+class ProductImage extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'categories_news';
+		return 'product_image';
 	}
 
 	/**
@@ -27,12 +27,12 @@ class CategoriesNews extends PIActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, alias', 'required', 'message'=>'{attribute} không được trống'),
-			array('created', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>255),
+			array('image, product_id, created', 'required'),
+			array('product_id, created', 'numerical', 'integerOnly'=>true),
+			array('image', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, alias, name, created', 'safe', 'on'=>'search'),
+			array('id, image, product_id, created', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,10 +53,10 @@ class CategoriesNews extends PIActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'Số thứ tự',
-			'alias' => 'Alias',
-			'name' => 'Tên danh mục',
-			'created' => 'Ngày đăng',
+			'id' => 'ID',
+			'image' => 'image',
+			'product_id' => 'Product',
+			'created' => 'Created',
 		);
 	}
 
@@ -79,9 +79,9 @@ class CategoriesNews extends PIActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('alias',$this->alias,true);
-		$criteria->compare('name',$this->name,true);
-		//$criteria->compare('created',$this->created);	
+		$criteria->compare('image',$this->image,true);
+		$criteria->compare('product_id',$this->product_id);
+		$criteria->compare('created',$this->created);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -92,34 +92,10 @@ class CategoriesNews extends PIActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return CategoriesNews the static model class
+	 * @return ProductImage the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-	public function getDataCategories()
-	{
-		$dataProvider=new CActiveDataProvider('CategoriesNews', array('criteria'=>array('select'=>'id, name')));
-		$arr = $dataProvider->getData();
-		$data_Categories = array();
-		$data_Categories[] = '-- Chọn danh mục tin tức --';
-		foreach($arr as $v){
-				$data_Categories[$v->id] = $v->name;
-		}
-		return $data_Categories;
-	}
-	
-	public function getDataCategories1()
-	{
-		$dataProvider=new CActiveDataProvider('CategoriesNews', array('criteria'=>array('select'=>'id, name')));
-		$arr = $dataProvider->getData();
-		$data_Categories = array();
-		$data_Categories[] = '-- Chọn danh mục tin tức --';
-		$data_Categories[""] = '-- Hiển thị tất cả --';
-		foreach($arr as $v){
-			$data_Categories[$v->id] = $v->name;
-		}
-		return $data_Categories;
 	}
 }
