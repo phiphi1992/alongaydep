@@ -45,7 +45,11 @@
 							'header'=>'STT',
 							'value'=>'$this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize + ($row+1)',
 						),
-						'name',
+						'name' => array(
+							'name'=>'created',
+							'filter'=>false,
+							'value' => 'CategoriesNews::model()->linkCategory($data->id)',
+						),
 						'created'=>array(
 							 'name'=>'created',
 							 'filter'=>false,
