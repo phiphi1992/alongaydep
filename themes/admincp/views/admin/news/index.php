@@ -41,19 +41,20 @@
 									'header'=>'STT',
 									'value'=>'$this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize + ($row+1)',
 								),
-								'name',								
-								'categories.name' => array(
-									'name' => 'category_news_id',
-									'type' => 'raw',
-									'value' => 'CategoriesNews::model()->linkCategory1($data->category_news_id)',
-									'filter' => CHtml::dropDownList('News[category_news_id]', ' ', CategoriesNews::model()->getDataCategories1()),
-								),
 								'image'=>array(
 									'name' => 'image',
 									'type'=>'raw',
 									'filter'=>false,
 									'value'=>'CHtml::image(getImage($data->image,"80", "60" ))',
 									'htmlOptions'=> array("class"=>"image"),
+								),
+								'name',	
+							
+								'categories.name' => array(
+									'name' => 'category_news_id',
+									'type' => 'raw',
+									'value' => 'CategoriesNews::model()->linkCategory1($data->category_news_id)',
+									'filter' => CHtml::dropDownList('News[category_news_id]', ' ', CategoriesNews::model()->getDataCategories1()),
 								),
 								'created'=>array(
 									'name'=>'created',

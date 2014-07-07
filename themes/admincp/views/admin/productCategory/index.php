@@ -15,13 +15,21 @@
 
 	<div class="page-content">
 		<div class="page-header position-relative">
+			<?php $id = (isset($_GET['id']) && !empty($_GET['id'])) ? $_GET['id'] : 1;  ?>
 			<h1>
-				<?php echo translate('Danh mục sản phẩm');?>
+				<?php 
+					if($id == 1) echo "Danh mục sản phẩm điện hoa";
+					else{
+						if($id == 2) echo "Danh muc sản phẩm du lịch";
+						else	echo "Danh mục thiết bị an ninh";
+					}
+				?>
 			</h1>
 		</div><!--/.page-header-->
 		<div class="row-fluid">
 			<div class="span12">
-			<a href="<?php echo PIUrl::createUrl('/admin/productCategory/create/');?>" class="btn btn-primary">
+			
+			<a href="<?php echo PIUrl::createUrl('/admin/productCategory/create/', array('id'=>$id));?>" class="btn btn-primary">
 				<i class="icon-ok bigger-110"></i>
 				<?php echo translate('Thêm');?>
 			</a>
@@ -29,7 +37,7 @@
 				<?php $this->widget('zii.widgets.grid.CGridView', array(
 					
 					'id'=>'productCategory-grid',
-					'dataProvider'=>$model->search(),
+					'dataProvider'=>$model->search($id),
 					'filter'=>$model,
 					'htmlOptions'=>array(),
 					'itemsCssClass'=>'table table-striped table-bordered table-hover',
@@ -78,7 +86,6 @@
 							'deleteConfirmation'=>'Bạn có muốn xóa danh mục này không?',
 						),
 					),
-					
 				)); ?>
 			</div><!--/.span-->
 		</div><!--/.row-fluid-->

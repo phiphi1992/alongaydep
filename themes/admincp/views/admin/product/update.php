@@ -30,6 +30,22 @@
 					'htmlOptions'=>array('class'=>'form-horizontal', 'enctype'=>'multipart/form-data'),
 				)); ?>
 					
+					
+					<div class="control-group">
+						<div class="controls">
+							<img style="max-width: 500px; max-height:200px;" src="<?php 
+								if(!empty($model)) echo getImageFullSize($model->image);
+							?>"/>
+						</div>
+					</div>
+					<div class="control-group">
+						<?php echo $form->labelEx($model,'image',array('class'=>'control-label')); ?>
+						<div class="controls">
+							<?php echo $form->fileField($model,'image',array('id'=>'id-input-file-1', 'class'=>'span12')); ?>
+							<?php echo $form->error($model,'image'); ?>
+						</div>
+					</div>
+					
 					<div class="control-group">
 						<?php echo $form->labelEx($model,'product_category_id',array('class'=>'control-label')); ?>
 						<div class="controls">
@@ -47,6 +63,14 @@
 					</div>
 					
 					<div class="control-group">
+						<?php echo $form->labelEx($model,'price',array('class'=>'control-label')); ?>
+						<div class="controls">
+							<?php echo $form->textField($model,'price',array('placeholder'=>'Giá', 'class'=>'span12')); ?>
+							<?php echo $form->error($model,'price'); ?>
+						</div>
+					</div>
+					
+					<div class="control-group">
 						<?php echo $form->labelEx($model,'description',array('class'=>'control-label')); ?>
 						<div class="controls">
 							<?php echo $form->textArea($model,'description',array('placeholder'=>'Mô tả', 'class'=>'span12')); ?>
@@ -59,28 +83,6 @@
 						<div class="controls">
 							<?php echo $form->textArea($model,'content',array('placeholder'=>'Nội dung', 'class'=>'ckeditor ')); ?>
 							<?php echo $form->error($model,'content'); ?>
-						</div>
-					</div>
-					
-					<div class="control-group">
-						<?php echo $form->labelEx($model,'price',array('class'=>'control-label')); ?>
-						<div class="controls">
-							<?php echo $form->textField($model,'price',array('placeholder'=>'Giá', 'class'=>'span12')); ?>
-							<?php echo $form->error($model,'price'); ?>
-						</div>
-					</div>
-					<div class="control-group">
-						<div class="controls">
-							<img style="max-width: 500px; max-height:200px;" src="<?php 
-								if(!empty($model)) echo getImageFullSize($model->image);
-							?>"/>
-						</div>
-					</div>
-					<div class="control-group">
-						<?php echo $form->labelEx($model,'image',array('class'=>'control-label')); ?>
-						<div class="controls">
-							<?php echo $form->fileField($model,'image',array('id'=>'id-input-file-1', 'class'=>'span12')); ?>
-							<?php echo $form->error($model,'image'); ?>
 						</div>
 					</div>
 					

@@ -41,6 +41,13 @@
 									'header'=>'STT',
 									'value'=>'$this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize + ($row+1)',
 								),
+								'image'=>array(
+									'name' => 'image',
+									'type'=>'raw',
+									'filter'=>false,
+									'value'=>'CHtml::image(getImage($data->image,"80", "60" ))',
+									'htmlOptions'=> array("class"=>"image"),
+								),
 								'name',		
 								'type'=>array(
 									'name' => 'type',
@@ -65,25 +72,6 @@
 									'type' => 'raw',
 									'value' => '$data->address',
 									'filter' => false,
-								),
-								'image'=>array(
-									'name' => 'image',
-									'type'=>'raw',
-									'filter'=>false,
-									'value'=>'CHtml::image(getImage($data->image,"80", "60" ))',
-									'htmlOptions'=> array("class"=>"image"),
-								),
-								'created'=>array(
-									'name'=>'created',
-									'type'=>'raw',
-									'filter'=>false,
-									'value'=>'($data->created != "") ? date(Yii::app()->params["date"],$data->created) : ""',
-								),
-								'updated'=>array(
-									'name'=>'updated',
-									'type'=>'raw',
-									'filter'=>false,
-									'value'=>'($data->updated != "") ? date(Yii::app()->params["date"],$data->updated) : ""',
 								),
 								array(
 									'header' => '<input type="button" name="deleteAll" class="deleteAll btn btn-mini btn-danger icon-trash bigger-120" value="Xóa" />',

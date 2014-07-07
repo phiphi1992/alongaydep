@@ -13,19 +13,26 @@
 		</ul>
 	</div>
 	<div class="page-content">
-		<div class="page-header position-relative">	
-			<h1>Danh sách sản phẩm</h1>
+		<div class="page-header position-relative">
+			<?php $id = (isset($_GET['id']) && !empty($_GET['id'])) ? $_GET['id'] : 1;  ?>
+			<h1><?php 
+				if($id == 1) echo "Danh sách sản phẩm điện hoa";
+				else{
+					if($id == 2) echo "Danh sách sản phẩm du lịch";
+					else	echo "Danh sách thiết bị an ninh";
+				}
+			?></h1>
 		</div><!--/.page-header-->
 		<div class="row-fluid">
 			<div class="span12">
-				<a href="<?php echo PIUrl::createUrl('/admin/product/create/');?>" class="btn btn-primary">
+				<a href="<?php echo PIUrl::createUrl('/admin/product/create/', array('id'=>$id));?>" class="btn btn-primary">
 					<i class="icon-ok bigger-110"></i>
 					<?php echo translate('Thêm');?>
 				</a>
 				<form method="post">
 					<?php $this->widget('zii.widgets.grid.CGridView', array(
 							'id'=>'product-grid',
-							'dataProvider'=>$model->search(),
+							'dataProvider'=>$model->search($id),
 							'filter'=>$model,
 							'htmlOptions'=>array(),
 							'itemsCssClass'=>'table table-striped table-bordered table-hover',
@@ -41,21 +48,25 @@
 									'header'=>'STT',
 									'value'=>'$this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize + ($row+1)',
 								),
-								'name',								
-								'productCategory.name' => array(
-									'name' => 'product_category_id',
-									'type' => 'raw',
-									'value' => 'isset($data->productCategory->name) ? $data->productCategory->name :  ""',
-									'filter' => CHtml::dropDownList('Product[product_category_id]', 0, ProductCategory::model()->getDataCategories1()),
-								),
-								'description',
-								'price',
 								'image'=>array(
 									'name' => 'image',
 									'type'=>'raw',
 									'filter'=>false,
 									'value'=>'CHtml::image(getImage($data->image,"80", "60" ))',
 									'htmlOptions'=> array("class"=>"image"),
+								),
+								'name',								
+								'productCategory.name' => array(
+									'name' => 'product_category_id',
+									'type' => 'raw',
+									'value' => 'isset($data->productCategory->name) ? $data->productCategory->name :  ""',
+									'filter' => CHtml::dropDownList('Product[product_category_id]', 0, ProductCategory::model()->getDataCategories($id)),
+								),
+								'price'=>array(
+									'name' => 'price',
+									'type'=>'raw',
+									'filter'=>false,
+									'value' => '$data->name',
 								),
 								'created'=>array(
 									'name'=>'created',
@@ -69,7 +80,7 @@
 									'type'=>'raw',
 									'filter'=>false,
 									'value'=>'($data->updated != "") ? date(Yii::app()->params["date"],$data->updated) : "" ',
-
+									
 								),
 								array(
 									'header' => '<input type="button" name="deleteAll" class="deleteAll btn btn-mini btn-danger icon-trash bigger-120" value="Xóa" />',
@@ -80,6 +91,7 @@
 											'options'=>array('class'=>'btn btn-mini btn-info icon-edit bigger-120','title'=>'Sửa tin tức' ),																							
 											'imageUrl' => false,
 											'label'=>false,
+											'url' => 'PIUrl::createUrl("/admin/product/update", array("id"=>$data->id, "type"=>'.$id.'))',  
 										),
 										'delete' => array(
 											'label'=>false,

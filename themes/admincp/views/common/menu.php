@@ -93,28 +93,76 @@
 			</li>
 		</ul>
 	</li>
-	<li <?php if(curCA('controller') == 'productCategory' ||  curCA('controller') == 'product' )  echo 'class="active"'?>>
+	<?php $id = (isset($_GET['id']) && !empty($_GET['id'])) ? $_GET['id'] : 1;  ?>
+	<li <?php if((curCA('controller') == 'productCategory' ||  curCA('controller') == 'product') && $id == 1 )  echo 'class="active"'?>>
 		<a href="#" class="dropdown-toggle">
 			<i class="icon-text-width"></i>
-			<span class="menu-text"> Sản phẩm</span>
+			<span class="menu-text">SP Điện Hoa </span>
 			<b class="arrow icon-angle-down"></b>
 		</a>
 		
 		<ul class="submenu">
 			<li>
-				<a href="<?php echo PIUrl::createUrl('/admin/productCategory/');?>" class="dropdown-toggle">
+				<a href="<?php echo PIUrl::createUrl('/admin/productCategory/', array("id"=>1));?>" class="dropdown-toggle">
 					<i class="icon-double-angle-right"></i>
 					Danh mục sản phẩm
 				</a>
 			</li>
 			<li>
-				<a href="<?php echo PIUrl::createUrl('/admin/product/');?>" class="dropdown-toggle">
+				<a href="<?php echo PIUrl::createUrl('/admin/product/', array("id"=>1));?>" class="dropdown-toggle">
 					<i class="icon-double-angle-right"></i>
 					Dánh sách sản phẩm
 				</a>
 			</li>
 		</ul>
 	</li>
+	
+	<li <?php if((curCA('controller') == 'productCategory' ||  curCA('controller') == 'product') && $id == 2 )  echo 'class="active"'?>>
+		<a href="#" class="dropdown-toggle">
+			<i class="icon-text-width"></i>
+			<span class="menu-text">SP Du Lịch </span>
+			<b class="arrow icon-angle-down"></b>
+		</a>
+		
+		<ul class="submenu">
+			<li>
+				<a href="<?php echo PIUrl::createUrl('/admin/productCategory/', array("id"=>2));?>" class="dropdown-toggle">
+					<i class="icon-double-angle-right"></i>
+					Danh mục sản phẩm
+				</a>
+			</li>
+			<li>
+				<a href="<?php echo PIUrl::createUrl('/admin/product/', array("id"=>2));?>" class="dropdown-toggle">
+					<i class="icon-double-angle-right"></i>
+					Dánh sách sản phẩm
+				</a>
+			</li>
+		</ul>
+	</li>
+	
+	<li <?php if((curCA('controller') == 'productCategory' ||  curCA('controller') == 'product') && $id == 3 )  echo 'class="active"'?>>
+		<a href="#" class="dropdown-toggle">
+			<i class="icon-text-width"></i>
+			<span class="menu-text">Thiết bị an ninh </span>
+			<b class="arrow icon-angle-down"></b>
+		</a>
+		
+		<ul class="submenu">
+			<li>
+				<a href="<?php echo PIUrl::createUrl('/admin/productCategory/', array("id"=>3));?>" class="dropdown-toggle">
+					<i class="icon-double-angle-right"></i>
+					Danh mục sản phẩm
+				</a>
+			</li>
+			<li>
+				<a href="<?php echo PIUrl::createUrl('/admin/product/', array("id"=>3));?>" class="dropdown-toggle">
+					<i class="icon-double-angle-right"></i>
+					Dánh sách sản phẩm
+				</a>
+			</li>
+		</ul>
+	</li>
+	
 	<li <?php if(curCA('controller') == 'bill' || curCA('controller')=='billDetail' ) echo 'class="active"'?>>
 		<a href="<?php echo PIUrl::createUrl('/admin/bill');?>">
 			<i class="icon-desktop"></i>

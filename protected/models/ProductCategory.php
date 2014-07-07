@@ -59,6 +59,7 @@ class ProductCategory extends CActiveRecord
 			'alias' => 'Alias',
 			'created' => 'Ngày đăng',
 			'updated' => 'Ngày cập nhập',
+			'type' => 'type',
 		);
 	}
 
@@ -74,7 +75,7 @@ class ProductCategory extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($id = null)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -85,7 +86,7 @@ class ProductCategory extends CActiveRecord
 		$criteria->compare('alias',$this->alias,true);
 		$criteria->compare('created',$this->created);
 		$criteria->compare('updated',$this->updated);
-
+		$criteria->addCondition("type = ".$id);
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -102,9 +103,9 @@ class ProductCategory extends CActiveRecord
 		return parent::model($className);
 	}
 	
-	public function getDataCategories()
+	public function getDataCategories($id = null)
 	{
-		$dataProvider=new CActiveDataProvider('ProductCategory', array('criteria'=>array('select'=>'id, name')));
+		$dataProvider=new CActiveDataProvider('ProductCategory', array('criteria'=>array('select'=>'id, name', 'condition'=>'type='.$id)));
 		$arr = $dataProvider->getData();
 		$data_Categories = array();
 		$data_Categories[] = '-- Chọn danh mục sản phẩm --';

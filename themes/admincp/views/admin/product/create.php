@@ -9,15 +9,22 @@
 					<i class="icon-angle-right arrow-icon"></i>
 				</span>
 			</li>
-			<li class="active"><?php echo translate('Sản phẩm');?></li>
+			<?php $id = (isset($_GET['id']) && !empty($_GET['id'])) ? $_GET['id'] : 1;  ?>
+			<li class="active">
+				<?php 
+					if($id == 1) echo "Sản phẩm điện hoa";
+					else{
+						if($id == 2) echo "Sản phẩm du lịch";
+						else	echo "Thiết bị an ninh";
+					}
+				?>
+			</li>
 		</ul>
 	</div>
-
+	
 	<div class="page-content">
-		<div class="page-header position-relative">
-			<h1>
-				<?php echo translate('Thêm sản phẩm');?>
-			</h1>
+		<div class="page-header position-relative">	
+			<h1>Thêm sản phẩm</h1>
 		</div><!--/.page-header-->
 		<div class="row-fluid">
 			<div class="span12">
@@ -47,6 +54,14 @@
 					</div>
 					
 					<div class="control-group">
+						<?php echo $form->labelEx($model,'price',array('class'=>'control-label')); ?>
+						<div class="controls">
+							<?php echo $form->textField($model,'price',array('placeholder'=>'Giá', 'class'=>'span12')); ?>
+							<?php echo $form->error($model,'price'); ?>
+						</div>
+					</div>
+					
+					<div class="control-group">
 						<?php echo $form->labelEx($model,'description',array('class'=>'control-label')); ?>
 						<div class="controls">
 							<?php echo $form->textArea($model,'description',array('placeholder'=>'Mô tả', 'class'=>'span12')); ?>
@@ -61,15 +76,7 @@
 							<?php echo $form->error($model,'content'); ?>
 						</div>
 					</div>
-					
-					<div class="control-group">
-						<?php echo $form->labelEx($model,'price',array('class'=>'control-label')); ?>
-						<div class="controls">
-							<?php echo $form->textField($model,'price',array('placeholder'=>'Giá', 'class'=>'span12')); ?>
-							<?php echo $form->error($model,'price'); ?>
-						</div>
-					</div>
-					
+						
 					<div class="control-group">
 						<?php echo $form->labelEx($model,'image',array('class'=>'control-label')); ?>
 						<div class="controls">

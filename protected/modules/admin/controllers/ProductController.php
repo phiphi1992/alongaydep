@@ -55,6 +55,7 @@ class ProductController extends Controller
 			
 			$model->created = time();
 			$model->alias = alias($_POST['Product']['name']);
+			$model->type = $id;
 			
 			if($model->save()){
 				Yii::app()->user->setFlash('success', translate('Thêm sản phẩm thành công.'));
@@ -78,14 +79,14 @@ class ProductController extends Controller
 					$modelImage->save();
 				}
 				
-				$this->redirect(PIUrl::createUrl('/admin/Product/'));
+				$this->redirect(PIUrl::createUrl('/admin/Product/', array('id'=>$id)));
 			}
 		}
-		$dataCategories = ProductCategory::model()->getDataCategories();
+		$dataCategories = ProductCategory::model()->getDataCategories($id);
 		$this->render('create', array('model'=>$model, 'dataCategories'=>$dataCategories));
 	}
 	
-	public function actionUpdate($id = null)
+	public function actionUpdate($id = null, $type = null)
 	{
 		$model = Product::model()->findByPk($id);
 		$flag  = 0;
@@ -110,7 +111,7 @@ class ProductController extends Controller
 				$model->attributes = $_POST['Product'];
 				$model->image = $image_old;
 			}
-			
+			$model->type = $id;
 			$model->updated = time();
 			$model->alias = alias($_POST['Product']['name']);
 			
@@ -136,10 +137,10 @@ class ProductController extends Controller
 					$modelImage->save();
 				}
 				
-				$this->redirect(PIUrl::createUrl('/admin/Product/'));
+				$this->redirect(PIUrl::createUrl('/admin/Product/', array('id'=>$id)));
 			}
 		}
-		$dataCategories = ProductCategory::model()->getDataCategories();
+		$dataCategories = ProductCategory::model()->getDataCategories($type);
 		$criteria  = new CDBCriteria;
 		$criteria->addCondition("product_id = {$id}");
 		$arrProductImage = ProductImage::model()->findAll($criteria);
