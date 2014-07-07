@@ -12,7 +12,7 @@
 						<div class="login-container">
 							<div class="row-fluid">
 								<div class="center" style="margin-top:30px;">
-									<img src = "<?php echo Yii::app()->theme->baseUrl;?>/assets/img/logo.png" />
+									<!--<img src = "<?php echo Yii::app()->theme->baseUrl;?>/assets/img/logo.png" />-->
 								</div>
 							</div>
 

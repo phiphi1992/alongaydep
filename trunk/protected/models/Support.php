@@ -1,26 +1,25 @@
 <?php
 
 /**
- * This is the model class for table "news".
+ * This is the model class for table "support".
  *
- * The followings are the available columns in table 'news':
+ * The followings are the available columns in table 'support':
  * @property integer $id
  * @property string $name
- * @property string $alias
- * @property integer $category_news_id
- * @property string $description
- * @property string $content
- * @property string $image
+ * @property string $position
+ * @property string $yahoo
+ * @property string $skype
+ * @property integer $phone
  * @property integer $created
  */
-class News extends PIActiveRecord
+class Support extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'news';
+		return 'support';
 	}
 
 	/**
@@ -31,15 +30,11 @@ class News extends PIActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, created, description, content', 'required', 'message'=>'{attribute} không được trống'),
-			array('category_news_id, created', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>500),
-			array('image', 'length', 'max'=>255),
-			//array('image', 'file', 'types'=>'jpg, gif, png', 'maxSize'=>'300000', 'allowEmpty'=>true),
-			array('description, content', 'safe'),
+			array('name, yahoo, phone', 'required', 'message'=>'{attribute} không được trống'),
+			array('name, position, yahoo, skype', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, alias, category_news_id, description, content, image, created', 'safe', 'on'=>'search'),
+			array('id, name, position, yahoo, skype, phone, created', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,8 +46,7 @@ class News extends PIActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'categories' => array(self::BELONGS_TO, 'CategoriesNews', 'category_news_id'),
-			'sub_category' => array(self::BELONGS_TO, 'SubCategoryNews', 'sub_category_id'),
+			'group' => array(self::BELONGS_TO, 'GroupSupport', 'group_support_id'),
 		);
 	}
 
@@ -62,15 +56,14 @@ class News extends PIActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'Số thứ tự',
-			'name' => 'Tên tin tức',
-			'alias' => 'Alias',
-			'category_news_id' => 'Danh mục tin tức',
-			'description' => 'Mô tả',
-			'content' => 'Nội dung',
-			'image' => 'Hình ảnh',
-			'created' => 'Ngày đăng',
-			'sub_category_id' => 'Danh muc con',
+			'id' => 'ID',
+			'name' => 'Tên',
+			'position' => 'chức vụ',
+			'yahoo' => 'Địa chỉ Yahoo',
+			'skype' => 'Địa chỉ Skype',
+			'phone' => 'Điện thoại',
+			'created' => 'Ngày tạo',
+			'group_support_id' => 'Nhóm hổ trợ',
 		);
 	}
 
@@ -91,17 +84,16 @@ class News extends PIActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-
-		$criteria->compare('id',$this->id);
+		//$criteria->compare('id',$this->id);
+		$criteria->compare('group_support_id',$this->group_support_id, true);
 		$criteria->compare('t.name',$this->name,true);
-		$criteria->compare('alias',$this->alias,true);
-		$criteria->compare('category_news_id',$this->category_news_id);
-		$criteria->compare('sub_category_id',$this->sub_category_id);
-		//$criteria->compare('description',$this->description,true);
-		$criteria->compare('content',$this->content,true);
-		//$criteria->compare('image',$this->image,true);
+		//$criteria->compare('position',$this->position,true);
+		//$criteria->compare('yahoo',$this->yahoo,true);
+		//$criteria->compare('skype',$this->skype,true);
+		//$criteria->compare('phone',$this->phone);
 		//$criteria->compare('created',$this->created);
-		$criteria->with = array('categories', 'sub_category');
+	
+		$criteria->with = array('group');
 		$criteria->together = true;
 		
 		return new CActiveDataProvider($this, array(
@@ -113,17 +105,10 @@ class News extends PIActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return News the static model class
+	 * @return Support the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
-	
-	function getImage($name='no-image.png',$w=100,$h=100,$zc=0){
-	if($name == '') $name = 'no-image.png';
-	if(!file_exists(Yii::getPathOfAlias('webroot').'/upload/images/'.$name))
-		$name = 'no-image.png';
-	return Yii::app()->getBaseUrl(true)."/image/{$w}/{$h}/{$zc}/{$name}";
-}
 }

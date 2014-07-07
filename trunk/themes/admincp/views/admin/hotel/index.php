@@ -9,22 +9,22 @@
 					<i class="icon-angle-right arrow-icon"></i>
 				</span>
 			</li>
-			<li class="active"><?php echo translate('Danh sách tin tức');?></li>
+			<li class="active"><?php echo translate('Danh bạ khách sạn');?></li>
 		</ul>
 	</div>
 	<div class="page-content">
 		<div class="page-header position-relative">	
-			<h1>Danh sách tin tức</h1>
+			<h1>Danh bạ khách sạn</h1>
 		</div><!--/.page-header-->
 		<div class="row-fluid">
 			<div class="span12">
-				<a href="<?php echo PIUrl::createUrl('/admin/news/create/');?>" class="btn btn-primary">
+				<a href="<?php echo PIUrl::createUrl('/admin/hotel/create/');?>" class="btn btn-primary">
 					<i class="icon-ok bigger-110"></i>
 					<?php echo translate('Thêm');?>
 				</a>
 				<form method="post">
 					<?php $this->widget('zii.widgets.grid.CGridView', array(
-							'id'=>'news-grid',
+							'id'=>'hotel-grid',
 							'dataProvider'=>$model->search(),
 							'filter'=>$model,
 							'htmlOptions'=>array(),
@@ -41,19 +41,26 @@
 									'header'=>'STT',
 									'value'=>'$this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize + ($row+1)',
 								),
-								'name',								
-								'categories.name' => array(
-									'name' => 'category_news_id',
+								'name',		
+								'type'=>array(
+									'name' => 'type',
 									'type' => 'raw',
-									'value' => 'isset($data->categories->name) ? $data->categories->name :  ""',
-									'filter' => CHtml::dropDownList('News[category_news_id]', 0, CategoriesNews::model()->getDataCategories1()),
+									'filter' => CHtml::dropDownList('Hotel[type]', '', Hotel::model()->getTypeHotel()),
+									'value' => 'Hotel::model()->getType($data->type)',
 								),
-								'sub_category.name' => array(
-									'name' => 'sub_category_id',
+								'pro.title' => array(
+									'name' => 'provinces',
 									'type' => 'raw',
-									'value' => 'isset($data->sub_category->name) ? $data->sub_category->name :  ""',
-									'filter' => CHtml::dropDownList('News[sub_category_id]', 0, SubCategoryNews::model()->getDataCategories1()),
+									'value' => 'isset($data->pro->title) ? $data->pro->title :  ""',
+									'filter' =>CHtml::dropDownList('Hotel[provinces]', '', Provinces::model()->getData()),
 								),
+								'ward.title' => array(
+									'name' => 'wards',
+									'type' => 'raw',
+									'value' => 'isset($data->ward->title) ? $data->ward->title :  ""',
+									'filter' =>CHtml::dropDownList('Hotel[wards]', '', Wards::model()->getData()),
+								),
+								'address',
 								'image'=>array(
 									'name' => 'image',
 									'type'=>'raw',
@@ -65,8 +72,13 @@
 									'name'=>'created',
 									'type'=>'raw',
 									'filter'=>false,
-									'value'=>'date(Yii::app()->params["date"],$data->created)',
-
+									'value'=>'($data->created != "") ? date(Yii::app()->params["date"],$data->created) : ""',
+								),
+								'updated'=>array(
+									'name'=>'updated',
+									'type'=>'raw',
+									'filter'=>false,
+									'value'=>'($data->updated != "") ? date(Yii::app()->params["date"],$data->updated) : ""',
 								),
 								array(
 									'header' => '<input type="button" name="deleteAll" class="deleteAll btn btn-mini btn-danger icon-trash bigger-120" value="Xóa" />',
@@ -77,7 +89,6 @@
 											'options'=>array('class'=>'btn btn-mini btn-info icon-edit bigger-120','title'=>'Sửa tin tức' ),																							
 											'imageUrl' => false,
 											'label'=>false,
-											'url' => 'PIUrl::createUrl("/admin/news/update", array("id"=>$data->id,"type"=>"2"))',  
 										),
 										'delete' => array(
 											'label'=>false,
@@ -109,22 +120,12 @@ input[type="checkbox"]{opacity:1;}
 <script>
 	$("document").ready(function(){
 		$(".deleteAll").live('click', function(){
-			var arrIdNew = $("#news-grid").yiiGridView('getSelection');
+			var arrIdNew = $("#hotel-grid").yiiGridView('getSelection');
 			if(arrIdNew != ""){
 				var answer = confirm ("Bạn có muốn xóa các tin tức được chọn không?");
 				if(answer){
-					var arrIdNew = $("#news-grid").yiiGridView('getSelection');
-					window.location.href = "<?php echo PIUrl::createUrl('/admin/news/deleteAll/');?>"+"?id="+arrIdNew;
-				}
-			}
-		});
-		$(".deleteAll1").live('click', function(){
-			var arrIdNew = $("#news-grid").yiiGridView('getSelection');
-			if(arrIdNew != ""){
-				var answer = confirm ("Bạn có muốn xóa các tin tức được chọn không?");
-				if(answer){
-					var arrIdNew = $("#news-grid").yiiGridView('getSelection');
-					window.location.href = "<?php echo PIUrl::createUrl('/admin/news/deleteAll1/');?>"+"?id="+arrIdNew;
+					var arrIdNew = $("#hotel-grid").yiiGridView('getSelection');
+					window.location.href = "<?php echo PIUrl::createUrl('/admin/hotel/deleteAll/');?>"+"?id="+arrIdNew;
 				}
 			}
 		});

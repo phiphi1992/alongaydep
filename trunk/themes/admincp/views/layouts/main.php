@@ -7,7 +7,7 @@
 			<div class="container-fluid">
 				<a href="<?php echo PIUrl::createUrl('/admin');?>" class="brand" style="padding-left:10px">
 					<small>
-						STECH
+						AloNgayDep
 					</small>
 				</a><!--/.brand-->
 

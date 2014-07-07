@@ -9,21 +9,21 @@
 					<i class="icon-angle-right arrow-icon"></i>
 				</span>
 			</li>
-			<li class="active"><?php echo translate('Tin tức');?></li>
+			<li class="active"><?php echo translate('Sản phẩm');?></li>
 		</ul>
 	</div>
 
 	<div class="page-content">
 		<div class="page-header position-relative">
 			<h1>
-				<?php echo translate('Câp nhập tin tức');?>
+				<?php echo translate('Cập nhập sản phẩm');?>
 			</h1>
 		</div><!--/.page-header-->
 		<div class="row-fluid">
 			<div class="span12">
 				<!--PAGE CONTENT BEGINS-->
 				<?php $form = $this->beginWidget('CActiveForm', array(
-					'id'=>'news-form',
+					'id'=>'product-form',
 					//'enableAjaxValidation'=>true,
 					'enableClientValidation'=>true,
 					'focus'=>array($model,'title'),
@@ -31,22 +31,13 @@
 				)); ?>
 					
 					<div class="control-group">
-						<?php echo $form->labelEx($model,'category_news_id',array('class'=>'control-label')); ?>
+						<?php echo $form->labelEx($model,'product_category_id',array('class'=>'control-label')); ?>
 						<div class="controls">
-							<?php echo $form->dropDownList($model,'category_news_id',$dataCategories, array('class'=>'span12 cateNew')); ?>
-							<?php echo $form->error($model,'category_news_id'); ?>
+							<?php echo $form->dropDownList($model,'product_category_id',$dataCategories, array('class'=>'span12 category')); ?>
+							<?php echo $form->error($model,'product_category_id'); ?>
 						</div>
 					</div>
-					<div class="control-group">
-						<label class="control-label">Danh mục con</label>
-						<div class="controls">
-							<select name="sub_category" class="span12 cate_sub">
-								<?php foreach($dataSubCate as $k=>$v){ ?>
-									<option value="<?php echo $k ?>" <?php echo ($k == $model->	sub_category_id) ? 'selected' : ''; ?>><?php echo $v; ?></option>
-								<?php } ?>
-							</select>
-						</div>
-					</div>
+					
 					<div class="control-group">
 						<?php echo $form->labelEx($model,'name',array('class'=>'control-label')); ?>
 						<div class="controls">
@@ -72,13 +63,19 @@
 					</div>
 					
 					<div class="control-group">
+						<?php echo $form->labelEx($model,'price',array('class'=>'control-label')); ?>
+						<div class="controls">
+							<?php echo $form->textField($model,'price',array('placeholder'=>'Giá', 'class'=>'span12')); ?>
+							<?php echo $form->error($model,'price'); ?>
+						</div>
+					</div>
+					<div class="control-group">
 						<div class="controls">
 							<img style="max-width: 500px; max-height:200px;" src="<?php 
 								if(!empty($model)) echo getImageFullSize($model->image);
 							?>"/>
 						</div>
 					</div>
-					
 					<div class="control-group">
 						<?php echo $form->labelEx($model,'image',array('class'=>'control-label')); ?>
 						<div class="controls">
@@ -86,9 +83,53 @@
 							<?php echo $form->error($model,'image'); ?>
 						</div>
 					</div>
-				
+					
+					<div class="widget-box  collapsed">
+						<div class="widget-header">
+							<h4>Thêm Hình Ảnh</h4>
 
-					<div class="form-actions">
+							<span class="widget-toolbar ">
+								<button class="btn btn-primary" data-action="collapse">
+								<i class="icon-chevron-up"></i>
+								<?php echo translate('Thêm');?>
+								</button>
+								<a href="#" data-action="close">
+									<i class="icon-remove"></i>
+								</a>
+							</span>
+						</div>
+
+						<div class="widget-body">
+							<div class="widget-main">
+								<input type="file" name="images[]" id="id-input-file-3" multiple='true' />
+								<label>
+									<input checked="true" type="checkbox" name="file-format" id="id-file-format" />
+									<span class="lbl"> Chỉ cho phép hình ảnh</span>
+								</label>
+							</div>
+						</div>
+					</div>
+					
+					<ul class="ace-thumbnails">
+					<?php if(!empty($arrProductImage)){ foreach($arrProductImage as $image):?>
+						<li>
+							<a href="javascript:void(0)">
+								<img width="150px" height="150px"  src="<?php echo getImage($image->image,150,150,1);?>" />
+							</a>
+
+							<div class="tools tools-bottom">
+								<a href="<?php echo $image->id; ?>" class="delete">
+									<i class="icon-remove red"></i>
+								</a>
+							</div>
+
+						</li>
+						<?php endforeach; }else{?>
+						<span>Không có hình ảnh</span>
+						<?php }?>				
+					</ul>
+
+					<div class="form-actions" style="clear:both;">
 						<button id="submitForm" class="btn btn-primary" type="submit">
 							<i class="icon-ok bigger-110"></i>
 							<?php echo translate('Cập nhập');?>
@@ -108,31 +149,32 @@
 <script>
 	$(document).ready(function(){
 	
-		$(".cateNew").change(function(){
-			var data = $(this).val();
-			if(data == 0)	return false;
-			else{
-				$.ajax({
-					url: "<?php echo PIUrl::createUrl('/admin/news/getCate');?>"+'?id='+data,
-					dataType : 'json',
-					success : function(data){
-						var html = '';
-						for(i=0; i<data.length; i++){
-							html+= "<option value = "+data[i].id+">"+data[i].name+"</option>";
-						}
-						$(".cate_sub").html(html);
-					},
-				});
-			}
+		// delete image
+		$(".delete").click(function(){
+			$(this).parent().parent().attr("class", "clicked");
+			data = $(this).attr("href");
+			$.ajax({
+				url:"<?php echo PIUrl::createUrl('/admin/product/deleteImage/'); ?>"+"?id="+data,
+				success:function(result){
+					if(result == true){
+						$(".clicked").remove();
+					}else{
+						alert("Xóa hình ảnh không thành công!");
+					}
+				}
+			});			
+			return false;
 		});
+		
+	
 	
 		$("#submitForm").click(function(){	
-			var cateNew = $(".cate_sub").val()
+			var cateNew = $(".category").val()
 			if(cateNew == 0){
-				alert("Vui lòng chọn danh mục tin tức");
+				alert("Vui lòng chọn danh mục sản phẩm");
 				return false;
 			}else{
-				$("#news-form").submit(function(){
+				$("#product-form").submit(function(){
 					$("#submitForm").attr("disabled", true);
 				});
 			}

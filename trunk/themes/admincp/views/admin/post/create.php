@@ -9,21 +9,21 @@
 					<i class="icon-angle-right arrow-icon"></i>
 				</span>
 			</li>
-			<li class="active"><?php echo translate('Tin tức');?></li>
+			<li class="active"><?php echo translate('Album');?></li>
 		</ul>
 	</div>
 
 	<div class="page-content">
 		<div class="page-header position-relative">
 			<h1>
-				<?php echo translate('Thêm tin tức');?>
+				<?php echo translate('Thêm album');?>
 			</h1>
 		</div><!--/.page-header-->
 		<div class="row-fluid">
 			<div class="span12">
 				<!--PAGE CONTENT BEGINS-->
 				<?php $form = $this->beginWidget('CActiveForm', array(
-					'id'=>'news-form',
+					'id'=>'post-form',
 					//'enableAjaxValidation'=>true,
 					'enableClientValidation'=>true,
 					'focus'=>array($model,'title'),
@@ -31,24 +31,9 @@
 				)); ?>
 					
 					<div class="control-group">
-						<?php echo $form->labelEx($model,'category_news_id',array('class'=>'control-label')); ?>
-						<div class="controls">
-							<?php echo $form->dropDownList($model,'category_news_id',$dataCategories, array('class'=>'span12 cateNew')); ?>
-							<?php echo $form->error($model,'category_news_id'); ?>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label">Danh mục con</label>
-						<div class="controls">
-							<select name="sub_category" class="span12 cate_sub">
-								<option value="0">-- Chọn danh mục tin tức -- </option>
-							</select>
-						</div>
-					</div>
-					<div class="control-group">
 						<?php echo $form->labelEx($model,'name',array('class'=>'control-label')); ?>
 						<div class="controls">
-							<?php echo $form->textField($model,'name',array('placeholder'=>'Tên tin tức', 'class'=>'span12')); ?>
+							<?php echo $form->textField($model,'name',array('placeholder'=>'Tên album', 'class'=>'span12')); ?>
 							<?php echo $form->error($model,'name'); ?>
 						</div>
 					</div>
@@ -98,35 +83,12 @@
 <script>
 	$(document).ready(function(){
 	
-		$(".cateNew").change(function(){
-			var data = $(this).val();
-			if(data == 0)	return false;
-			else{
-				$.ajax({
-					url: "<?php echo PIUrl::createUrl('/admin/news/getCate');?>"+'?id='+data,
-					dataType : 'json',
-					success : function(data){
-						var html = '';
-						for(i=0; i<data.length; i++){
-							html+= "<option value = "+data[i].id+">"+data[i].name+"</option>";
-						}
-						$(".cate_sub").html(html);
-					},
-				});
-			}
-		});
-	
 		$("#submitForm").click(function(){	
-			var cateNew = $(".cate_sub").val()
-			if(cateNew == 0){
-				alert("Vui lòng chọn danh mục tin tức");
-				return false;
-			}else{
-				$("#news-form").submit(function(){
-					$("#submitForm").attr("disabled", true);
-				});
-			}
+			
+			$("#post-form").submit(function(){
+				$("#submitForm").attr("disabled", true);
+			});
+			
 		});
 	});
-	
 </script>

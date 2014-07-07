@@ -1,6 +1,6 @@
 <?php
 
-class CategoriesNewsController extends Controller
+class SupportController extends Controller
 {
 	public function filters()
 	{
@@ -16,58 +16,70 @@ class CategoriesNewsController extends Controller
 	
 	public function actionIndex()
 	{
-		$model = new CategoriesNews('search');
+		$model = new Support('search');
+		
 		$model->unsetAttributes();  // clear any default values
 		
-		if(isset($_GET['CategoriesNews']))
-			$model->attributes=$_GET['CategoriesNews'];
-
+		if(isset($_GET['Support']))
+			$model->attributes=$_GET['Support'];
+		
 		$this->render('index',array(
 			'model'=>$model,
 		));
 	}
 	public function actionCreate()
 	{
-		$model = new CategoriesNews;
+		$model = new Support;
 		
-		if(isset($_POST['CategoriesNews']))
+		if(isset($_POST['Support']))
 		{
-			$model->attributes=$_POST['CategoriesNews'];
+			$model->attributes=$_POST['Support'];
 			$model->created = time();
-			$model->alias = alias($_POST['CategoriesNews']['name']);
+			$model->group_support_id = $_POST['Support']['group_support_id'];
+			
 			if($model->save())
 			{
-				Yii::app()->user->setFlash('success', translate('Thêm thành công.'));
-				$this->redirect(PIUrl::createUrl('/admin/categoriesNews/index'));
+				Yii::app()->user->setFlash('success', translate('Thêm nhóm hỗ trợ thành công.'));
+				$this->redirect(PIUrl::createUrl('/admin/support/index'));
 			}
 		}
+		$groupSupport = GroupSupport::model()->getGroupSupport();
 		
-		$this->render('create', array('model'=>$model));
+		$this->render('create', array(
+			'model'=>$model,
+			'groupSupport' => $groupSupport,
+		));
 	}
 	
 	public function actionUpdate($id = null)
 	{
-		$model = CategoriesNews::model()->findByPk($id);
+		$model = Support::model()->findByPk($id);
 		
-		if(isset($_POST['CategoriesNews']))
+		if(isset($_POST['Support']))
 		{
-			
-			$model->attributes=$_POST['CategoriesNews'];
+
+			$model->attributes=$_POST['Support'];
 			$model->created = time();
+			$model->group_support_id = $_POST['Support']['group_support_id'];
 			
 			if($model->save())
 			{
-				Yii::app()->user->setFlash('success', translate('Cập nhập thành công.'));
-				$this->redirect(PIUrl::createUrl('/admin/categoriesNews/index'));
+				Yii::app()->user->setFlash('success', translate('Cập nhập nhóm hổ trợ thành công.'));
+				$this->redirect(PIUrl::createUrl('/admin/support/index'));
 			}
 		}
 		
-		$this->render('update', array('model'=>$model));
+		$groupSupport = GroupSupport::model()->getGroupSupport();
+		
+		$this->render('update', array(
+			'model'=>$model,
+			'groupSupport' => $groupSupport,
+		));
 	}
 	
 	public function loadModel($id)
 	{
-		$model=CategoriesNews::model()->findByPk($id);
+		$model=Support::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -89,18 +101,6 @@ class CategoriesNewsController extends Controller
 		// Delete all news of category new
 		$model = $this->loadModel($id);
 		if(!empty($model)){
-		
-			// delete sub category
-			$criteria = new CDBCriteria();
-			$criteria->addCondition("category_new_id = {$id}");
-			$criteria->select = "id";
-			$arrSubCateID = SubCategoryNews::model()->findALl($criteria);
-			foreach($arrSubCateID as $cate){
-				$modelCate = SubCategoryNews::model()->find($cate->id);
-				$modelCate->delete();
-			}
-		
-			// delete news
 			$criteria = new CDBCriteria();
 			$criteria->addCondition("category_news_id = {$id}");
 			$criteria->select = "id";
@@ -131,17 +131,6 @@ class CategoriesNewsController extends Controller
 			// Delete all news of category new
 			$model = $this->loadModel($arrIdNew[$i]);
 			if(!empty($model)){
-				// delete sub category
-				$criteria = new CDBCriteria();
-				$criteria->addCondition("category_new_id = {$arrIdNew[$i]}");
-				$criteria->select = "id";
-				$arrSubCateID = SubCategoryNews::model()->findALl($criteria);
-				foreach($arrSubCateID as $cate){
-					$modelCate = SubCategoryNews::model()->find($cate->id);
-					$modelCate->delete();
-				}
-			
-				// delete news
 				$criteria = new CDBCriteria();
 				$criteria->addCondition("category_news_id = {$arrIdNew[$i]}");
 				$criteria->select = "id";
