@@ -66,7 +66,7 @@
 									'name' => 'price',
 									'type'=>'raw',
 									'filter'=>false,
-									'value' => '$data->name',
+									'value' => '$data->price',
 								),
 								'created'=>array(
 									'name'=>'created',

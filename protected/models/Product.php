@@ -34,7 +34,7 @@ class Product extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name, alias, description, content, product_category_id, price', 'required', 'message'=>'{attribute} không được trống'),
-			array('created, updated, product_category_id, price', 'numerical', 'integerOnly'=>true),
+			array('created, updated, product_category_id, price', 'numerical', 'integerOnly'=>true, 'message'=>'{attribute} phải là số'),
 			array('name, alias, image', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
