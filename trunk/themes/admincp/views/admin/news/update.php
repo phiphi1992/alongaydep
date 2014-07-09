@@ -49,20 +49,18 @@
 					<div class="control-group">
 						<?php echo $form->labelEx($model,'category_news_id',array('class'=>'control-label')); ?>
 						<div class="controls">
-							<?php echo $form->dropDownList($model,'category_news_id',$dataCategories, array('class'=>'span12 cateNew')); ?>
+							<select name="category_news_id" class="span12 cateNew">
+								<option value="">-- Chọn danh mục tin tức --</option>
+								<?php foreach($dataCategories as $cate){ ?>
+									<option value="<?php echo $cate['id']; ?>" <?php echo ($cate['id']==$model->category_news_id) ? 'selected' : ''; ?>>
+										<?php echo $cate['name']; ?>
+									</option>
+								<?php } ?>
+							</select>
 							<?php echo $form->error($model,'category_news_id'); ?>
 						</div>
 					</div>
-					<div class="control-group">
-						<label class="control-label">Danh mục con</label>
-						<div class="controls">
-							<select name="sub_category" class="span12 cate_sub">
-								<?php foreach($dataSubCate as $k=>$v){ ?>
-									<option value="<?php echo $k ?>" <?php echo ($k == $model->	sub_category_id) ? 'selected' : ''; ?>><?php echo $v; ?></option>
-								<?php } ?>
-							</select>
-						</div>
-					</div>
+						
 					<div class="control-group">
 						<?php echo $form->labelEx($model,'name',array('class'=>'control-label')); ?>
 						<div class="controls">
@@ -108,26 +106,8 @@
 <script>
 	$(document).ready(function(){
 	
-		$(".cateNew").change(function(){
-			var data = $(this).val();
-			if(data == 0)	return false;
-			else{
-				$.ajax({
-					url: "<?php echo PIUrl::createUrl('/admin/news/getCate');?>"+'?id='+data,
-					dataType : 'json',
-					success : function(data){
-						var html = '';
-						for(i=0; i<data.length; i++){
-							html+= "<option value = "+data[i].id+">"+data[i].name+"</option>";
-						}
-						$(".cate_sub").html(html);
-					},
-				});
-			}
-		});
-	
 		$("#submitForm").click(function(){	
-			var cateNew = $(".cate_sub").val()
+			var cateNew = $(".cateNew").val()
 			if(cateNew == 0){
 				alert("Vui lòng chọn danh mục tin tức");
 				return false;

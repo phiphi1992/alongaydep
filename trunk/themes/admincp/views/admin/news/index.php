@@ -53,7 +53,7 @@
 								'categories.name' => array(
 									'name' => 'category_news_id',
 									'type' => 'raw',
-									'value' => 'CategoriesNews::model()->linkCategory1($data->category_news_id)',
+									'value' => 'CategoriesNews::model()->linkCategory($data->category_news_id)',
 									'filter' => CHtml::dropDownList('News[category_news_id]', ' ', CategoriesNews::model()->getDataCategories1()),
 								),
 								'created'=>array(

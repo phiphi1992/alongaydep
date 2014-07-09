@@ -98,27 +98,50 @@ class CategoriesNewsController extends Controller
 		// Delete all news of category new
 		$model = $this->loadModel($id);
 		if(!empty($model)){
-		
-			// delete sub category
-			$criteria = new CDBCriteria;
-			$criteria->addCondition("parent_id = ".$id);
-			$cate = new CategoriesNews();
-			$cate->deleteAll($criteria);
-		
-			// delete news
-			$criteria = new CDBCriteria();
-			$criteria->addCondition("category_news_id = {$id}");
-			$criteria->select = "id";
-			$arrNewID = News::model()->findALl($criteria);
-			foreach($arrNewID as $newId){
-			
-				$modelNew = News::model()->find($newId->id);
-				$path = "/../upload/images/";
-				$name = $modelNew->image;
-				$this->unlink($path, $name);
-				$modelNew->delete();
+						
+				// delete news
+				$criteria = new CDBCriteria();
+				if($model->parent_id == 0){
+					$criCate = new CDBCriteria;
+					$criCate->addCondition("parent_id = ".$model->id);
+					$arrCate = CategoriesNews::model()->findAll($criCate);
+					foreach($arrCate as $cate){
+						$criteria->addCondition("category_news_id = {$cate->id}");
+						$criteria->select = "id";
+						$arrNewID = News::model()->findAll($criteria);
+						if(!empty($arrNewID)){
+							foreach($arrNewID as $newId){
+								$modelNew = News::model()->find($newId->id);
+								$path = "/../upload/images/";
+								$name = $modelNew->image;
+								$this->unlink($path, $name);
+								$modelNew->delete();
+							}
+						}
+					}
+				}else{
+					$criteria->addCondition("category_news_id = {$model->id}");
+					$criteria->select = "id";
+					$arrNewID = News::model()->findAll($criteria);
+					if(!empty($arrNewID)){
+						foreach($arrNewID as $newId){
+							$modelNew = News::model()->find($newId->id);
+							$path = "/../upload/images/";
+							$name = $modelNew->image;
+							$this->unlink($path, $name);
+							$modelNew->delete();
+						}
+					}
+				}
+				
+				// delete sub category
+				$criteria = new CDBCriteria;
+				$criteria->addCondition("parent_id = ".$id);	
+				$cate = new CategoriesNews();
+				$cate->deleteAll($criteria);
+				
+				$model->delete();
 			}
-		}
 		
 		// Delete category new
 		$model->delete();
@@ -136,25 +159,48 @@ class CategoriesNewsController extends Controller
 			// Delete all news of category new
 			$model = CategoriesNews::model()->findByPk($arrIdNew[$i]);
 			if(!empty($model)){
+						
+				// delete news
+				$criteria = new CDBCriteria();
+				if($model->parent_id == 0){
+					$criCate = new CDBCriteria;
+					$criCate->addCondition("parent_id = ".$model->id);
+					$arrCate = CategoriesNews::model()->findAll($criCate);
+					foreach($arrCate as $cate){
+						$criteria->addCondition("category_news_id = {$cate->id}");
+						$criteria->select = "id";
+						$arrNewID = News::model()->findAll($criteria);
+						if(!empty($arrNewID)){
+							foreach($arrNewID as $newId){
+								$modelNew = News::model()->find($newId->id);
+								$path = "/../upload/images/";
+								$name = $modelNew->image;
+								$this->unlink($path, $name);
+								$modelNew->delete();
+							}
+						}
+					}
+				}else{
+					$criteria->addCondition("category_news_id = {$model->id}");
+					$criteria->select = "id";
+					$arrNewID = News::model()->findAll($criteria);
+					if(!empty($arrNewID)){
+						foreach($arrNewID as $newId){
+							$modelNew = News::model()->find($newId->id);
+							$path = "/../upload/images/";
+							$name = $modelNew->image;
+							$this->unlink($path, $name);
+							$modelNew->delete();
+						}
+					}
+				}
+				
 				// delete sub category
 				$criteria = new CDBCriteria;
 				$criteria->addCondition("parent_id = ".$arrIdNew[$i]);	
 				$cate = new CategoriesNews();
 				$cate->deleteAll($criteria);
-			
-				// delete news
-				$criteria = new CDBCriteria();
-				$criteria->addCondition("category_news_id = {$arrIdNew[$i]}");
-				$criteria->select = "id";
-				$arrNewID = News::model()->findALl($criteria);
-				foreach($arrNewID as $newId){
 				
-					$modelNew = News::model()->find($newId->id);
-					$path = "/../upload/images/";
-					$name = $modelNew->image;
-					$this->unlink($path, $name);
-					$modelNew->delete();
-				}
 				$model->delete();
 			}
 			
