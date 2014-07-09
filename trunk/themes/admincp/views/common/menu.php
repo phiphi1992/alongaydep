@@ -187,7 +187,7 @@
 			<span class="menu-text"> Quản lý truy cập </span>
 		</a>
 	</li>
-	<!--<li <?php if(curCA('controller') == 'slides')  echo 'class="active"'?>>
+	<li <?php if(curCA('controller') == 'slides')  echo 'class="active"'?>>
 		<a href="#" class="dropdown-toggle">
 			<i class="icon-text-width"></i>
 			<span class="menu-text"> Hình ảnh</span>
@@ -195,7 +195,7 @@
 		</a>
 		
 		<ul class="submenu">
-			<li>
+			<!--<li>
 				<a href="<?php echo PIUrl::createUrl('/admin/slides/');?>" class="dropdown-toggle">
 					<i class="icon-double-angle-right"></i>
 					Hoạt động
@@ -206,7 +206,7 @@
 					<i class="icon-double-angle-right"></i>
 					Sản phẩm mới
 				</a>
-			</li>
+			</li>-->
 			<li>
 				<a href="<?php echo PIUrl::createUrl('/admin/slides/',array('is_product'=>3));?>">
 					<i class="icon-double-angle-right"></i>
@@ -214,7 +214,7 @@
 				</a>
 			</li>
 		</ul>
-	</li>-->
+	</li>
 	<li <?php if(curCA('controller') == 'contact' && (curCA('action') == 'index' ||  curCA('action') == 'update')) echo 'class="active"'?>>
 		<a href="<?php echo PIUrl::createUrl('/admin/contact');?>">
 			<i class="icon-file-alt"></i>
