@@ -106,16 +106,12 @@ class CategoriesNews extends PIActiveRecord
 		$dataProvider=new CActiveDataProvider('CategoriesNews', array('criteria'=>array('select'=>'id, name, parent_id')));
 		$arr = $dataProvider->getData();
 		$data_Categories = array();
-		$data_Categories[] = '-- Chọn danh mục tin tức --';
 		foreach($arr as $v){
-			if($v->parent_id == 0){
-				$criteria = new CDbCriteria;
-				$criteria->addCondition("parent_id = ".$v->id);
-				$category = CategoriesNews::model()->find($criteria);
-				if(!empty($category))	$category = " >> ".$category->name;
-				else	$category = '';
-				$link = $v->name.$category;
-				$data_Categories[$v->id] = $link;
+			if($v->parent_id != 0){
+				$data_Categories[] = array(
+					'id' => $v->id,
+					'name' =>  $this->linkCategory($v->id),
+				);
 			}
 				
 		}

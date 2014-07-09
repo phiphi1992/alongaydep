@@ -12,7 +12,7 @@
  * @property string $content
  * @property string $image
  * @property integer $created
- * @property integer $sub_category_id
+ * @property integer $parent_id
  */
 class News extends PIActiveRecord
 {
@@ -53,7 +53,6 @@ class News extends PIActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'categories' => array(self::BELONGS_TO, 'CategoriesNews', 'category_news_id'),
-			'sub_category' => array(self::BELONGS_TO, 'SubCategoryNews', 'sub_category_id'),
 		);
 	}
 
@@ -71,7 +70,7 @@ class News extends PIActiveRecord
 			'content' => 'Nội dung',
 			'image' => 'Hình ảnh',
 			'created' => 'Ngày đăng',
-			'sub_category_id' => 'Danh muc con',
+			'parent_id' => 'Danh muc cha',
 		);
 	}
 
@@ -95,14 +94,8 @@ class News extends PIActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('t.name',$this->name,true);
-		//$criteria->compare('alias',$this->alias,true);
-		$criteria->compare('category_news_id',$this->category_news_id);
-		$criteria->compare('sub_category_id',$this->sub_category_id);
-		//$criteria->compare('description',$this->description,true);
-		//$criteria->compare('content',$this->content,true);
-		//$criteria->compare('image',$this->image,true);
-		//$criteria->compare('created',$this->created);
-		$criteria->with = array('categories', 'sub_category');
+		$criteria->compare('t.parent_id',$this->parent_id);
+		$criteria->with = array('categories');
 		$criteria->together = true;
 		
 		return new CActiveDataProvider($this, array(

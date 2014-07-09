@@ -20,7 +20,11 @@ class NewsController extends Controller
 		$model->unsetAttributes();  // clear any default values
 		
 		if(isset($_GET['News']))
-		{	$model->attributes=$_GET['News'];
+		{	
+			$model->attributes=$_GET['News'];
+			$model->parent_id = $model->category_news_id;
+			$model->category_news_id = null;
+			dump($model->attributes, false);
 		}
 		
 		$this->render('index',array(
@@ -53,7 +57,13 @@ class NewsController extends Controller
 				$model->attributes = $_POST['News'];
 				$model->image = $image_old;
 			}
-			$model->category_news_id = $_POST['News']['category_news_id'];
+			$model->category_news_id = $_POST['category_news_id'];
+			if(!empty($model->category_news_id)){
+				$cateParent = CategoriesNews::model()->findByPk($model->category_news_id);
+				if(!empty($cateParent)){
+					$model->parent_id = $cateParent->parent_id;
+				}
+			}
 			$model->created = time();
 			$model->alias = alias($_POST['News']['name']);
 			
@@ -71,19 +81,7 @@ class NewsController extends Controller
 		$dataCategories = CategoriesNews::model()->getDataCategories();
 		$this->render('create', array('model'=>$model, 'dataCategories'=>$dataCategories));
 	}
-	
-	public function actionGetCate($id = null){
-		$criteria = new CDBCriteria();
-		$criteria->addCondition('parent_id = '.$id);
-		$criteria->select = 'id, name';
-		$arr_cate = CategoriesNews::model()->findAll($criteria);
-		$arrData = array();
-		foreach($arr_cate as $cate){
-			$arrData[] = array('id'=>$cate->id, 'name'=>$cate->name);
-		}
-		echo json_encode($arrData);
-	}
-	
+		
 	public function actionUpdate($id = null)
 	{
 		$model = News::model()->findByPk($id);
@@ -110,7 +108,13 @@ class NewsController extends Controller
 				$model->image = $image_old;
 			}
 			
-			$model->category_news_id = $_POST['News']['category_news_id'];
+			$model->category_news_id = $_POST['category_news_id'];
+			if(!empty($model->category_news_id)){
+				$cateParent = CategoriesNews::model()->findByPk($model->category_news_id);
+				if(!empty($cateParent)){
+					$model->parent_id = $cateParent->parent_id;
+				}
+			}
 			$model->created = time();
 			$model->alias = alias($_POST['News']['name']);
 			
@@ -139,12 +143,10 @@ class NewsController extends Controller
 			}
 		}
 		$dataCategories = CategoriesNews::model()->getDataCategories();
-		$dataSubCate = SubCategoryNews::model()->getDataCategories($model->category_news_id);
 		
 		$this->render('update', array('model'=>$model, 
-				'dataCategories'=>$dataCategories,
-				'dataSubCate' => $dataSubCate,
-			));
+			'dataCategories'=>$dataCategories,
+		));
 	}
 	
 	public function loadModel($id)
